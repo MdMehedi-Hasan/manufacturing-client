@@ -4,7 +4,7 @@ import Card from './HomeUtilities/Card';
 const Home = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/service')
+        fetch('https://blooming-ravine-00694.herokuapp.com/service')
         .then(res=>res.json())
         .then(data=>setServices(data))
     }, [])
