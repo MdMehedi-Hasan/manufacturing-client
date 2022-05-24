@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
-import auth from '../firebase.init'
+import auth from '../../firebase.init'
 
 const Login = () => {
     const [register, setRegister] = useState(true);
@@ -18,45 +18,65 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    let navigate = useNavigate();
-    let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     useEffect(() => {
         if (user || gUser || newUser) {
             navigate(from, { replace: true });
         }
-    },[user || gUser || newUser])
-    
+    }, [user || gUser || newUser])
+
     const handleRegister = (e) => {
         e.preventDefault();
         const name = e?.target?.name?.value;
         const email = e?.target?.email?.value;
         const password = e?.target?.password?.value;
         const user = { name, email, password }
-        createUserWithEmailAndPassword(email,password)
-        console.log("Register-clicked", user);
-        e.target.reset();
-        }
+        fetch('http://localhost:5000/users', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                createUserWithEmailAndPassword(email, password)
+                e.target.reset();
+            })
+        // createUserWithEmailAndPassword(email, password)
+        // e.target.reset();
+    }
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e?.target?.email?.value;
         const password = e?.target?.password?.value;
-        const user = {email,password}
-        console.log("Login-clicked");
-        signInWithEmailAndPassword(email,password)
-        e.target.reset();
-        }
+        const user = { email, password }
+        fetch('http://localhost:5000/users', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                signInWithEmailAndPassword(email, password)
+                e.target.reset();
+            })
+        // signInWithEmailAndPassword(email, password)
+        // e.target.reset();
+    }
     return (
         <div>
             <div className="hero lg:block">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    {/*   <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    </div> */}
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form onSubmit={register ? (e) =>handleRegister(e) : (e) =>handleLogin(e)}>
-                            <div className="card-body">
+                        <div className="card-body">
+                            <form onSubmit={register ? (e) => handleRegister(e) : (e) => handleLogin(e)}>
                                 {register ? <h1 className='text-4xl text-center'>Register</h1> : <h1 className='text-4xl text-center'>Log in</h1>}
                                 {register && <div className="form-control">
                                     <label className="label">
@@ -82,11 +102,14 @@ const Login = () => {
                                 <div className="form-control mt-2">
                                     <input className="btn btn-primary" type="submit" value={register ? "Submit" : "Log in"} />
                                 </div>
-                                <div className='text-center mt-2'>{register ? <div>Already have an account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(false) }}> Please login</button></div> : <div>Don't have any account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(true) }}> Register here</button></div>}</div>
-                                <div className="divider">OR</div>
-                                <button onClick={() => signInWithGoogle()} className="btn btn-outline">Sign in with google</button>
-                            </div>
-                        </form>
+                            </form>
+                            <div className='text-center mt-2'>{register ? <div>Already have an account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(false) }}> Please login</button></div> : <div>Don't have any account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(true) }}> Register here</button></div>}</div>
+                            <div className="divider">OR</div>
+                            <button onClick={() => signInWithGoogle()} className="btn btn-outline">Sign in with google</button>
+                        </div>
+                        {/* <div className='text-center mt-2'>{register ? <div>Already have an account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(false) }}> Please login</button></div> : <div>Don't have any account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(true) }}> Register here</button></div>}</div>
+                        <div className="divider">OR</div>
+                        <button onClick={() => signInWithGoogle()} className="btn btn-outline">Sign in with google</button> */}
                     </div>
                 </div>
             </div>

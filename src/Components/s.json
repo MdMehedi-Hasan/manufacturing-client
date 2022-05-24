@@ -3,30 +3,40 @@
       "price": "$3,171.55",
       "image": "https://ae01.alicdn.com/kf/UT8JxCMXmNeXXagOFbXy/220166940/UT8JxCMXmNeXXagOFbXy.jpg",
       "name": "Kari Short",
-      "details": "Ipsum adipisicing culpa non excepteur dolor pariatur id aliquip non cillum adipisicing. Exercitation aute velit quis dolor labore consectetur. Veniam incididunt laborum elit pariatur incididunt anim. Sit culpa duis eiusmod qui dolore. Ipsum aliquip nulla officia eiusmod deserunt ut ex. Ullamco veniam dolore occaecat ea deserunt pariatur Lorem proident amet elit. Esse aliqua consectetur sunt eu labore occaecat voluptate nisi.\r\n"
+      "details": "Ipsum adipisicing culpa non excepteur dolor pariatur id aliquip non cillum adipisicing. Exercitation aute velit quis dolor labore consectetur. Veniam incididunt laborum elit pariatur incididunt anim.",
+      "available": "100000",
+      "min-order":"500"
     },
     {
       "price": "$1,845.87",
       "image": "https://ae01.alicdn.com/kf/UT8JxCMXmNeXXagOFbXy/220166940/UT8JxCMXmNeXXagOFbXy.jpg",
       "name": "John Salazar",
-      "details": "Non sunt elit dolore esse aute do reprehenderit in sit pariatur culpa in cillum irure. Eiusmod tempor velit culpa sint. Ut ullamco ut Lorem non irure quis dolor sit eiusmod cillum elit amet. Non amet anim quis elit occaecat eu nulla non amet esse ea ea excepteur do. Ipsum ullamco in esse nisi ut amet minim consequat. Mollit minim duis officia incididunt adipisicing. Eiusmod voluptate mollit eiusmod ipsum non qui velit sunt enim ad nostrud voluptate non.\r\n"
+      "details": "Non sunt elit dolore esse aute do reprehenderit in sit pariatur culpa in cillum irure. Eiusmod tempor velit culpa sint. Ut ullamco ut Lorem non irure quis dolor sit eiusmod cillum elit amet.",
+      "available": "100000",
+      "min-order":"500"
     },
     {
       "price": "$3,207.95",
       "image": "https://ae01.alicdn.com/kf/UT8JxCMXmNeXXagOFbXy/220166940/UT8JxCMXmNeXXagOFbXy.jpg",
       "name": "Christie Jones",
-      "details": "Cupidatat anim culpa id ipsum ex do enim aute velit. Ipsum mollit culpa id do quis aliqua elit consectetur qui reprehenderit nulla. Nostrud in dolore occaecat ut cillum cupidatat nostrud in. Consectetur sit laborum occaecat exercitation non. Est commodo proident qui dolore fugiat magna id est ad ad dolore nulla ut. Voluptate labore ex velit cupidatat et aliqua dolore pariatur est aute id.\r\n"
+      "details": "Cupidatat anim culpa id ipsum ex do enim aute velit. Ipsum mollit culpa id do quis aliqua elit consectetur qui reprehenderit nulla. Nostrud in dolore occaecat ut cillum cupidatat nostrud in.",
+      "available": "100000",
+      "min-order":"500"
     },
     {
       "price": "$1,831.59",
       "image": "https://ae01.alicdn.com/kf/UT8JxCMXmNeXXagOFbXy/220166940/UT8JxCMXmNeXXagOFbXy.jpg",
       "name": "Lillian Walker",
-      "details": "Ea cillum non dolor sunt esse magna tempor dolor do commodo. Veniam non pariatur sint adipisicing consequat commodo minim. Dolore aliqua veniam quis proident amet exercitation. Anim veniam eu est est ex anim id adipisicing elit quis mollit. Anim elit qui tempor ex Lorem culpa do proident ipsum non pariatur ullamco deserunt Lorem. Proident mollit aliqua mollit irure. Elit incididunt aliqua labore nulla sunt irure sit anim aliquip adipisicing mollit reprehenderit.\r\n"
+      "details": "Ea cillum non dolor sunt esse magna tempor dolor do commodo. Veniam non pariatur sint adipisicing consequat commodo minim. Dolore aliqua veniam quis proident amet exercitation. Anim veniam eu est est ex anim id adipisicing elit quis mollit.",
+      "available": "100000",
+      "min-order":"500"
     },
     {
       "price": "$3,293.33",
       "image": "https://ae01.alicdn.com/kf/UT8JxCMXmNeXXagOFbXy/220166940/UT8JxCMXmNeXXagOFbXy.jpg",
       "name": "Chaney Mercado",
-      "details": "Exercitation exercitation occaecat nulla ullamco ullamco culpa velit eu labore incididunt nisi consectetur eu dolore. Dolor mollit mollit nulla sint veniam est aliqua aliqua proident eu aliquip. Do mollit officia Lorem labore in culpa qui incididunt. Nulla minim do irure quis cupidatat ea occaecat laborum adipisicing do dolor anim excepteur. Exercitation fugiat ullamco exercitation dolor quis ad exercitation irure anim ex. Consequat amet sint pariatur nostrud aute magna in nulla. Culpa ipsum dolore ad incididunt excepteur officia ex.\r\n"
+      "details": "Exercitation exercitation occaecat nulla ullamco ullamco culpa velit eu labore incididunt nisi consectetur eu dolore. Dolor mollit mollit nulla sint veniam est aliqua aliqua proident eu aliquip. Do mollit officia Lorem labore in culpa qui incididunt.",
+      "available": "100000",
+      "min-order":"500"
     }
   ]
