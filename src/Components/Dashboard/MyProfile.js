@@ -6,9 +6,6 @@ import auth from '../../firebase.init';
 
 const MyProfile = () => {
     const [user, loading, error] = useAuthState(auth);
-    if (loading) {
-        <h1>Loading</h1>
-    }
     return (
         <div className='grid' style={{ gridTemplateColumns:"2fr 3fr"}}>
             <div className='bg-slate-600 py-16 flex lg:items-center justify-center'>

@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init'
 
 const Login = () => {
-    const [register, setRegister] = useState(true);
+    const [register, setRegister] = useState(false);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
         createUserWithEmailAndPassword,
@@ -33,7 +33,7 @@ const Login = () => {
         const email = e?.target?.email?.value;
         const password = e?.target?.password?.value;
         const user = { name, email, password }
-        fetch('http://localhost:5000/users', {
+       /*  fetch('http://localhost:5000/users', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,16 +45,16 @@ const Login = () => {
                 console.log('Success:', data);
                 createUserWithEmailAndPassword(email, password)
                 e.target.reset();
-            })
-        // createUserWithEmailAndPassword(email, password)
-        // e.target.reset();
+            }) */
+        createUserWithEmailAndPassword(email, password)
+        e.target.reset();
     }
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e?.target?.email?.value;
         const password = e?.target?.password?.value;
         const user = { email, password }
-        fetch('http://localhost:5000/users', {
+        /* fetch('http://localhost:5000/users', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -66,9 +66,9 @@ const Login = () => {
                 console.log('Success:', data);
                 signInWithEmailAndPassword(email, password)
                 e.target.reset();
-            })
-        // signInWithEmailAndPassword(email, password)
-        // e.target.reset();
+            }) */
+        signInWithEmailAndPassword(email, password)
+        e.target.reset();
     }
     return (
         <div>

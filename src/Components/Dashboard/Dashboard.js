@@ -4,10 +4,6 @@ import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Dashboard = () => {
-    const [user, loading, error] = useAuthState(auth);
-    if (loading) {
-        return <h1>Loading</h1>
-    }
     return (
         <div className=''>
             <div className="drawer drawer-mobile">

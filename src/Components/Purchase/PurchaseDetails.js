@@ -14,9 +14,6 @@ const PurchaseDetails = () => {
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
-    if (loading) {
-        return <h1>Loading</h1>
-    }
     return (
         <div className="hero">
             <div className="hero-content flex-col lg:flex-row items-start">

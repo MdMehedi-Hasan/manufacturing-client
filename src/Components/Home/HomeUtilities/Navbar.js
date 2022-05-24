@@ -6,9 +6,6 @@ import auth from '../../../firebase.init';
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
-  if (loading) {
-    return <h1>loading</h1>
-  }
   return (
     <div className='border-b-2'>
       <div className="navbar bg-base-100 justify-between">
@@ -27,7 +24,7 @@ const Navbar = () => {
           </div>
           <Link to='/' className="btn btn-ghost normal-case text-xl">Final project</Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li><Link to="/">Home</Link></li>
             {/* <li><Link to="/purchase">Purchase</Link></li> */}
