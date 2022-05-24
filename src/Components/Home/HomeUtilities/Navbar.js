@@ -20,10 +20,12 @@ const Navbar = () => {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/blogs">Blogs</Link></li>
               {user && <li><Link to="/dashboard">Dashboard</Link></li>}
+              {user && <li><Link to="/admin">Admin</Link></li>}
               <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+              <label for="admin-drawer" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
             </ul>
           </div>
-          <Link to='/' className="btn btn-ghost normal-case text-xl">Final project</Link>
+          <Link to='/' className="btn btn-ghost normal-case text-xl">Wrench &amp; Screws</Link>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
@@ -32,7 +34,7 @@ const Navbar = () => {
             {user && <li><Link to="/dashboard">Dashboard</Link></li>}
             {user && <li><Link to="/admin">Admin</Link></li>}
 
-            <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+            {/* <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
           </ul>
         </div>
         <div className="dropdown dropdown-end">

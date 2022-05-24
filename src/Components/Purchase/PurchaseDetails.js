@@ -10,7 +10,7 @@ const PurchaseDetails = () => {
     const [products, setProducts] = useState();
     const { id } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${id}`)
+        fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

@@ -7,7 +7,7 @@ import Summary from './HomeUtilities/Summary';
 const Home = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('https://blooming-ravine-00694.herokuapp.com/service')
+        fetch('http://localhost:5000/products')
         .then(res=>res.json())
         .then(data=>setServices(data))
     }, [])
@@ -27,7 +27,6 @@ const Home = () => {
             <h1 className='text-8xl text-center'>Reviews</h1>
             <h1 className='text-8xl text-center'>Top buyers</h1>
             <h1 className='text-8xl text-center'>Map</h1>
-            
             <Footer></Footer>
             </div>
     );
