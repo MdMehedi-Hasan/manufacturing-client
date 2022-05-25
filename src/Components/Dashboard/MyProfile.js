@@ -18,7 +18,7 @@ const MyProfile = () => {
                         <div className='flex items-center mb-3'><Icon icon="ic:baseline-person" /><span className='ml-2'>{user.displayName}</span></div>
                         <div className='flex items-center'><Icon icon="ic:baseline-email" /><span className='ml-2'>{user.email}</span></div>
                     </div>
-                    <button className="btn btn-outline" onClick={()=>signOut(auth)}> Log out</button>
+                    <button className="btn btn-outline" onClick={() => { signOut(auth);localStorage.removeItem('accessToken') }}> Log out</button>
                     </div>
             </div>
             <div className='bg-slate-300 pl-5'>

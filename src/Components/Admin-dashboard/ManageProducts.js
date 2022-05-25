@@ -5,7 +5,7 @@ import SingleRow from './SingleRow'
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
     const [updateDelete, setUpdateDelete] = useState(false)
-    const [updateQnty,setUpdateQnty]= useState(false)
+    const [updateQnty, setUpdateQnty] = useState(false)
     console.log(updateDelete);
     // ===================================== Getting all products ====================================
     useEffect(() => {
@@ -19,7 +19,7 @@ const ManageProducts = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({id}),
+            body: JSON.stringify({ id }),
         })
             .then(response => response.json())
             .then(data => {
@@ -35,8 +35,8 @@ const ManageProducts = () => {
             })
     }
     return (
-        <div class="overflow-x-auto w-full">
-            <table class="table w-full">
+        <div className="overflow-x-auto w-full">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th>

@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event';
+import { Icon } from '@iconify/react';
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -7,7 +7,6 @@ import auth from '../../../firebase.init';
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
-  console.log(user);
   return (
     <div className='border-b-2'>
       <div className="navbar bg-base-100 justify-between">
@@ -22,10 +21,11 @@ const Navbar = () => {
               {user && <li><Link to="/dashboard">Dashboard</Link></li>}
               {user && <li><Link to="/admin">Admin</Link></li>}
               <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-              <label for="admin-drawer" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+              <label htmlFor="admin-drawer" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
             </ul>
           </div>
-          <Link to='/' className="btn btn-ghost normal-case text-xl">Wrench &amp; Screws</Link>
+
+          <Link to='/' className="btn btn-ghost normal-case text-xl"><Icon icon="entypo:tools" />Wrench &amp; Screws</Link>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
@@ -41,9 +41,9 @@ const Navbar = () => {
           <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full bg-orange-200">
               {
-                user?.photoURL ? <img src={user?.photoURL} alt="" /> : <span className='inline-block mt-1 text-xl'>{user?.email?.slice(0,1)}</span>
+                user?.photoURL ? <img src={user?.photoURL} alt="" /> : <span className='inline-block mt-1 text-xl'>{user?.email?.slice(0, 1)}</span>
               }
-              
+
             </div>
           </label>
           <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -53,7 +53,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li><a>Settings</a></li>
-            <li>{user ? <span onClick={() => signOut(auth)}>Log out</span> : <Link to="/login">Log in</Link>}</li>
+            <li>{user ? <span onClick={() => { signOut(auth);localStorage.removeItem('accessToken') }}>Log out</span> : <Link to="/login">Log in</Link>}</li>
           </ul>
         </div>
       </div>

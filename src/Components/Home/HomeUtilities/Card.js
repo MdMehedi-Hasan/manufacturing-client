@@ -5,7 +5,6 @@ const Card = ({ service }) => {
     const {name,image,details,price}= service
     const navigate = useNavigate();
     const handleBuy = (id) => {
-        console.log(id)
         navigate(`/purchase/${id}`)
     }
     return (

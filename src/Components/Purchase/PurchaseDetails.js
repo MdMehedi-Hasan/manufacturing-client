@@ -37,26 +37,26 @@ const PurchaseDetails = () => {
                         <div><span></span><span></span></div>
                         <div><span></span><span></span></div>
                     </div>
-                <div class="card flex-shrink-0 max-w-sm">
-                    <div class="card-body">
-                        <div class="form-control">
-                            {/* <label class="label">
-                                <span class="label-text">Email</span>
+                    <div className="card flex-shrink-0 max-w-sm">
+                        <div className="card-body">
+                            <div className="form-control">
+                                {/* <label className="label">
+                                <span className="label-text">Email</span>
                             </label> */}
-                            <input type="text" placeholder="email" class="input input-bordered" />
-                        </div>
-                        <div class="form-control">
-                            {/* <label class="label">
-                                <span class="label-text">Password</span>
+                                <input type="text" placeholder="email" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                {/* <label className="label">
+                                <span className="label-text">Password</span>
                             </label> */}
-                            <input type="text" placeholder="password" class="input input-bordered" />
+                                <input type="text" placeholder="password" className="input input-bordered" />
+                            </div>
+                            <div className="form-control mt-6">
+                                <button className="btn btn-primary">Update info</button>
+                            </div>
                         </div>
-                        <div class="form-control mt-6">
-                            <button class="btn btn-primary">Update info</button>
-                        </div>
                     </div>
-                    </div>
-                    </div>
+                </div>
             </div>
         </div>
     );

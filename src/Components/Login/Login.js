@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init'
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const [register, setRegister] = useState(false);
@@ -18,58 +19,36 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
-    useEffect(() => {
-        if (user || gUser || newUser) {
-            navigate(from, { replace: true });
-        }
-    }, [user || gUser || newUser])
-
+    const [token] = useToken(user || gUser || newUser)
+    console.log(token);
     const handleRegister = (e) => {
         e.preventDefault();
         const name = e?.target?.name?.value;
         const email = e?.target?.email?.value;
         const password = e?.target?.password?.value;
         const user = { name, email, password }
-       /*  fetch('http://localhost:5000/users', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                createUserWithEmailAndPassword(email, password)
-                e.target.reset();
-            }) */
-        createUserWithEmailAndPassword(email, password)
-        e.target.reset();
+            createUserWithEmailAndPassword(email, password)
+            e.target.reset();
     }
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e?.target?.email?.value;
         const password = e?.target?.password?.value;
         const user = { email, password }
-        /* fetch('http://localhost:5000/users', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                signInWithEmailAndPassword(email, password)
-                e.target.reset();
-            }) */
         signInWithEmailAndPassword(email, password)
         e.target.reset();
     }
+    const handleGoogleLogin = () => {
+        signInWithGoogle()
+    }
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token])
     return (
         <div>
             <div className="hero lg:block">
@@ -105,7 +84,7 @@ const Login = () => {
                             </form>
                             <div className='text-center mt-2'>{register ? <div>Already have an account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(false) }}> Please login</button></div> : <div>Don't have any account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(true) }}> Register here</button></div>}</div>
                             <div className="divider">OR</div>
-                            <button onClick={() => signInWithGoogle()} className="btn btn-outline">Sign in with google</button>
+                            <button onClick={handleGoogleLogin} className="btn btn-outline">Sign in with google</button>
                         </div>
                         {/* <div className='text-center mt-2'>{register ? <div>Already have an account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(false) }}> Please login</button></div> : <div>Don't have any account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(true) }}> Register here</button></div>}</div>
                         <div className="divider">OR</div>
