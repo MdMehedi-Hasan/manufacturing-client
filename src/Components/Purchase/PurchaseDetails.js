@@ -14,14 +14,27 @@ const PurchaseDetails = () => {
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
+    const handleOrder = () => {
+        fetch('http://localhost:5000/purchase', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(products),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+    }
     return (
         <div className="hero">
             <div className="hero-content flex-col lg:flex-row items-start">
-                <img src={products?.image} className="max-w-sm rounded-lg shadow-2xl" alt="" />
+                <img src={products?.productImage} className="max-w-sm rounded-lg shadow-2xl" alt="" />
                 <div className='border-l-2 pl-5'>
-                    <h1 className="text-5xl font-bold">{products?.name}</h1>
+                    <h1 className="text-5xl font-bold">{products?.productName}</h1>
                     <p className="py-6">{products?.details}</p>
-                    <button className="btn btn-primary">Place order</button>
+                    <button onClick={handleOrder} className="btn btn-primary">Place order</button>
                 </div>
                 <div className='border-l-2 pl-2'>
                     <img src={image} alt="" />

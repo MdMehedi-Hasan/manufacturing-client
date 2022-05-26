@@ -17,12 +17,11 @@ const Home = () => {
             <Banner></Banner>
             
             <h1 className='text-8xl text-center'>Products</h1>
-            <div className='grid grid-cols-4 gap-8'>
+            <div className='grid grid-cols-3 gap-8'>
             {
                 services.map(service=><Card service={service} key={service._id}></Card>)
             }
             </div>
-            <h1 className='text-8xl text-center'>Summary</h1>
             <Summary></Summary>
             <h1 className='text-8xl text-center'>Reviews</h1>
             <h1 className='text-8xl text-center'>Top buyers</h1>

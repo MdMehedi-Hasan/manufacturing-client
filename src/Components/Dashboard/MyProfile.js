@@ -11,7 +11,7 @@ const MyProfile = () => {
             <div className='bg-slate-600 py-16 flex lg:items-center justify-center'>
                 <div className="avatar flex-col ">
                     <div className="w-36 rounded-full mx-auto ring ring-white">
-                        <img src={user.photoURL} alt='' />                       
+                       {user.photoURL? <img src={user.photoURL} alt='' />:<div className='text-8xl text-center mt-2'> {user.email.slice(0,1)}</div>}                        
                     </div>
                     <button className="btn btn-accent mt-5">Edit profile</button>
                     <div className='mt-5'>
