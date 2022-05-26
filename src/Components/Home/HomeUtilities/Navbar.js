@@ -33,19 +33,18 @@ const Navbar = () => {
             <li><Link to="/blogs">Blogs</Link></li>
             {user && <li><Link to="/dashboard">Dashboard</Link></li>}
             {user && <li><Link to="/admin">Admin</Link></li>}
-
-            {/* <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
+            {!user && <li> <Link to="/login">Log in</Link></li>}
           </ul>
         </div>
         <div className="dropdown dropdown-end">
-          <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+         {user&& <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full bg-white">
               {
                 user?.photoURL ? <img src={user?.photoURL} alt="" /> : <span className='inline-block mt-1 text-xl text-black'>{user?.email?.slice(0, 1)}</span>
               }
 
             </div>
-          </label>
+          </label>}
           <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
             <li>
               <Link to="dashboard/dashboard/myprofile" className="justify-between">
