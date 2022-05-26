@@ -11,7 +11,7 @@ const Banner = () => {
         <div className='h-96' style={{ backgroundImage: `url('${banner}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
             <div className='w-full h-full overlay'>
                 <div className='lg:w-2/3 flex flex-col justify-center items-center pt-5'>
-                    <h1 className='text-orange-100 lg:text-4xl lg:text-left lg:ml-10 text-center text-xl' data-aos="fade-right" data-aos-once="false" data-aos-duration="1000" data-aos-easing="ease-in"
+                    <h1 className='text-orange-100 lg:text-4xl lg:text-left lg:ml-10 text-center text-xl' data-aos="fade-right" data-aos-once="false" data-aos-duration="500" data-aos-easing="ease-in"
                         data-aos-mirror="true"> Welcome to Wrench &amp; Screws! We manufacture tools for your daily needs.
                     </h1>
                 </div>

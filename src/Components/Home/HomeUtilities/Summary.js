@@ -5,7 +5,7 @@ import map from '../../../images/map.jpg'
 const Summary = () => {
     return (
         <div className='bg-white my-52' style={{ backgroundImage: `url('${map}')`,backgroundRepeat:'no-repeat',backgroundSize:'cover'}}>
-            <h1 className='lg:w-2/4 text-4xl lg:ml-14 ml-5 py-12' data-aos="zoom-out-right">Our professional team works to increase productivity and cost effectiveness on the market.</h1>
+            <h1 className='lg:w-2/4 text-4xl lg:ml-14 ml-5 py-12' data-aos="zoom-out-right" data-aos-duration="1000">Our professional team works to increase productivity and cost effectiveness on the market.</h1>
         <div className='flex justify-center'>
             <div className="stats stats-vertical lg:stats-horizontal text-center w-11/12 bg-transparent mb-10">
 
