@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import Categories from './HomeUtilities/Categories';
 import Banner from './HomeUtilities/Banner';
 import Card from './HomeUtilities/Card';
 import Footer from './HomeUtilities/Footer';
 import Summary from './HomeUtilities/Summary';
+import Reviews from './HomeUtilities/Reviews';
+import MAp from './HomeUtilities/MAp';
 
 const Home = () => {
     const [services, setServices] = useState([]);
@@ -13,19 +16,20 @@ const Home = () => {
     }, [])
     console.log(services)
     return (
-        <div>
+        <div className='bg-sky-800'>
             <Banner></Banner>
-            
-            <h1 className='text-8xl text-center'>Products</h1>
-            <div className='grid grid-cols-3 gap-8'>
+            <div className='py-28 text-center'>
+            <h1 className='border-b-2 border-emerald-900 inline-block text-4xl text-amber-500 font-bold mb-16'>Products we manufacture</h1>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 '>
             {
                 services.map(service=><Card service={service} key={service._id}></Card>)
             }
             </div>
+            </div>
+            <Categories></Categories>
             <Summary></Summary>
-            <h1 className='text-8xl text-center'>Reviews</h1>
-            <h1 className='text-8xl text-center'>Top buyers</h1>
-            <h1 className='text-8xl text-center'>Map</h1>
+            <Reviews></Reviews>
+            <MAp></MAp>
             <Footer></Footer>
             </div>
     );
