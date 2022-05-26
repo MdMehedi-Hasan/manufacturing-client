@@ -7,26 +7,22 @@ import image from '../../images/delivery-bg.png'
 const PurchaseDetails = () => {
     const [user] = useAuthState(auth);
     const [info, setInfo] = useState([])
-    // console.log(info);
-    // const [orderQnt, setOrderQnt] = useState(0)
+    console.log(info);
     const [error, setError] = useState('')
     console.log(error);
     const [products, setProducts] = useState();
     const { id } = useParams();
-    /* let error;
-    if (orderQnt<products?.productMinOrder) {
-        console.log("aisi");
-    } */
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
     useEffect(() => {
-        fetch('http://localhost:5000/users', {
+        fetch('http://localhost:5000/user', {
             method: "GET",
             headers: {
-                'authorization':`${localStorage.getItem('accessToken')}`
+                'authorization': `${localStorage.getItem('accessToken')}`,
+                'email':`${user.email}`
             }
         })
         .then(res=>res.json())
@@ -99,8 +95,8 @@ const PurchaseDetails = () => {
                     <div>
                         <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="bi:person-fill" /></span><span>{user?.displayName}</span></div>
                         <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="dashicons:email" /></span><span>{user?.email}</span></div>
-                        <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="carbon:phone-filled" /></span><span></span></div>
-                        <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="el:map-marker" /></span><span></span></div>
+                        <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="carbon:phone-filled" /></span><span>{info? info.number : "N/A"}</span></div>
+                        <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="el:map-marker" /></span><span>{info? info.address : "N/A"}</span></div>
                     </div>
                     <div className="card flex-shrink-0 max-w-sm">
                         <div className="card-body p-2 mt-5">

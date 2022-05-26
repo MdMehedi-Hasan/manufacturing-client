@@ -39,9 +39,9 @@ const Navbar = () => {
         </div>
         <div className="dropdown dropdown-end">
           <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full bg-amber-500">
+            <div className="w-10 rounded-full bg-white">
               {
-                user?.photoURL ? <img src={user?.photoURL} alt="" /> : <span className='inline-block mt-1 text-xl'>{user?.email?.slice(0, 1)}</span>
+                user?.photoURL ? <img src={user?.photoURL} alt="" /> : <span className='inline-block mt-1 text-xl text-black'>{user?.email?.slice(0, 1)}</span>
               }
 
             </div>
