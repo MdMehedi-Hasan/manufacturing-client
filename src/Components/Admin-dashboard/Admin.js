@@ -18,6 +18,7 @@ const Admin = () => {
                         <li><Link to="addProducts">Add Products</Link></li>
                         <li><Link to="manageOrders">Manage Orders</Link></li>
                         <li><Link to="makeadmin">Make Admin</Link></li>
+                        <li><Link to="myprofile">My profile</Link></li>
                     </ul>
 
                 </div>

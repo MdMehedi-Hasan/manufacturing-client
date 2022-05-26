@@ -36,7 +36,8 @@ function App() {
           <Route index element={<ManageProducts/>}></Route>
           <Route path="addProducts" element={<AddProducts/>}></Route>
           <Route path="manageOrders" element={<ManageOrders/>}></Route>
-          <Route path="makeadmin" element={<MakeAdmin/>}></Route>
+          <Route path="makeadmin" element={<MakeAdmin />}></Route>
+          <Route path="myprofile" element={<MyProfile />}></Route>
         </Route>
         <Route path="purchase/:id" element={<RequireAuth><PurchaseDetails /></RequireAuth>}></Route>
         <Route path="*" element={<NotFound />}></Route>

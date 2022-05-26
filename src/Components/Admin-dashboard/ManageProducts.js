@@ -53,7 +53,7 @@ const ManageProducts = () => {
                     }
                 </tbody>
             </table>
-        </div>
+        </div >
     );
 };
 
