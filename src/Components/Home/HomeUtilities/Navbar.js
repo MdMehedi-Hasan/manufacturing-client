@@ -18,10 +18,10 @@ const Navbar = () => {
             <ul tabIndex="0" className=" menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/blogs">Blogs</Link></li>
-              {user && <li><Link to="/dashboard">Dashboard</Link></li>}
-              {user && <li><Link to="/admin">Admin</Link></li>}
-              <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">&gt;</label>
-              <label htmlFor="admin-drawer" className="btn btn-primary drawer-button lg:hidden">&gt;</label>
+              {user && <div className='flex items-center'><li><Link to="/dashboard">Dashboard</Link></li>
+              <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
+              {user && <div className='flex items-center'><li><Link to="/admin">Admin</Link></li>
+              <label htmlFor="admin-drawer" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
             </ul>
           </div>
 
@@ -46,7 +46,7 @@ const Navbar = () => {
 
             </div>
           </label>
-          <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+          <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
             <li>
               <Link to="dashboard/dashboard/myprofile" className="justify-between">
                 My Profile

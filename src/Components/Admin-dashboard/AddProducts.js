@@ -28,40 +28,40 @@ const AddProducts = () => {
     return (
         <div className="hero h-screen">
             <div className="hero-content">
-                <div className="card flex-shrink-0 w-96 shadow-2xl bg-base-100">
-                    <div className="card-body ">
+                <div className="card flex-shrink-0 lg:w-96 shadow-2xl bg-base-100">
+                    <div className="card-body">
                         <form onSubmit={handleSubmit}>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between mb-5">
                                 <label className="label">
                                     <span className="label-text font-bold text-base">Product name:</span>
                                 </label>
-                                <input type="text" name="name" placeholder="Name" className="input input-bordered" />
+                                <input required type="text" name="name" placeholder="Name" className="input input-bordered" />
                             </div>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between mb-5">
                                 <label className="label">
                                     <span className="label-text font-bold text-base">Price:</span>
                                 </label>
-                                <input type="number" name="price" placeholder="$" className="input input-bordered" />
+                                <input required type="number" name="price" placeholder="$" className="input input-bordered" />
                             </div>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between mb-5">
                                 <label className="label">
                                     <span className="label-text font-bold text-base">Quantity:</span>
                                 </label>
-                                <input type="number" name="quantity" placeholder="00" className="input input-bordered" />
+                                <input required type="number" name="quantity" placeholder="00" className="input input-bordered" />
                             </div>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between mb-5">
                                 <label className="label">
                                     <span className="label-text font-bold text-base">Min-order:</span>
                                 </label>
-                                <input type="number" name="minOrder" placeholder="-pcs" className="input input-bordered" />
+                                <input required type="number" name="minOrder" placeholder="-pcs" className="input input-bordered" />
                             </div>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between mb-5">
                                 <label className="label">
                                     <span className="label-text font-bold text-base">Upload image:</span>
                                 </label>
-                                <input type="text" name="image" placeholder="https://" className="input input-bordered" />
+                                <input required type="text" name="image" placeholder="https://" className="input input-bordered" />
                             </div>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between mb-5">
                                 <label className="label">
                                     <span className="label-text font-bold text-base">Description:</span>
                                 </label>

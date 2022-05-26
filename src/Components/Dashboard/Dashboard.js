@@ -8,14 +8,14 @@ const Dashboard = () => {
         <div className=''>
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col">
+                <div className="drawer-content flex flex-col bg-cyan-900">
                     {/* <!-- Page content here --> */}
                     {/* <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
                     <Outlet />
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 overflow-y-auto w-48 text-base-content bg-cyan-900">
+                    <ul className="menu p-4 overflow-y-auto w-48 text-base-content bg-slate-700">
                         {/* <!-- Sidebar content here --> */}
                         <li><Link to="dashboard/myorders" className='text-white'>My orders</Link></li>
                         <li><Link to="dashboard/addreviews" className='text-white'>Add a review</Link></li>

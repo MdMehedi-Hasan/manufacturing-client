@@ -9,8 +9,8 @@ const MyOrders = () => {
             .then(data => setProduct(data))
     }, [])
     return (
-        <div>
-            {product.map(p => <div className="card lg:card-side bg-orange-100 shadow-xl mb-5">
+        <div className='bg-cyan-900'>
+            {product.map(p => <div className="card lg:card-side bg-white shadow-xl mb-5">
                 <figure><img className='lg:w-24' src={p.productImage} alt="Album" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{p.productName}</h2>

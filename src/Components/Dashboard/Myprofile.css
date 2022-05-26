@@ -1,0 +1,10 @@
+.myGrid{
+    display:grid;
+    grid-template-columns: 2fr 3fr;
+}
+@media screen and (max-width:768px) {
+    .myGrid{
+    display:flex;
+    flex-direction: column-reverse;
+    }
+}
