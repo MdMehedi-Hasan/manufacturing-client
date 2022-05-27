@@ -21,7 +21,9 @@ const Navbar = () => {
               {user && <div className='flex items-center'><li><Link to="/dashboard">Dashboard</Link></li>
               <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
               {user && <div className='flex items-center'><li><Link to="/admin">Admin</Link></li>
-              <label htmlFor="admin-drawer" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
+                <label htmlFor="admin-drawer" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
+              
+            {!user && <li> <Link to="/login">Log in</Link></li>}
             </ul>
           </div>
 

@@ -20,21 +20,19 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const [token] = useToken(user || gUser || newUser)
-    console.log(token);
+    console.log(newError);
     const handleRegister = (e) => {
         e.preventDefault();
         const name = e?.target?.name?.value;
         const email = e?.target?.email?.value;
         const password = e?.target?.password?.value;
-        const user = { name, email, password }
-            createUserWithEmailAndPassword(email, password)
-            e.target.reset();
+        createUserWithEmailAndPassword(email, password)
+        e.target.reset();
     }
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e?.target?.email?.value;
         const password = e?.target?.password?.value;
-        const user = { email, password }
         signInWithEmailAndPassword(email, password)
         e.target.reset();
     }
@@ -61,34 +59,34 @@ const Login = () => {
                                     <label className="label">
                                         <span className="label-text">Your name</span>
                                     </label>
-                                    <input type="text" placeholder="name" name="name" className="input input-bordered" />
+                                    <input required type="text" placeholder="name" name="name" className="input input-bordered" />
                                 </div>}
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="text" placeholder="email" name="email" className="input input-bordered" />
+                                    <input required type="text" placeholder="email" name="email" className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="text" placeholder="password" name="password" className="input input-bordered" />
+                                    <input required type="text" placeholder="password" name="password" className="input input-bordered" />
                                     {!register && <label className="label">
                                         <a href="/" className="label-text-alt link link-hover">Forgot password?</a>
                                     </label>}
                                 </div>
+                                {error && <p className='text-red-500'>{error?.message?.split(':')[1]}</p>}
+                                {gError && <p className='text-red-500'>{gError?.message?.split(':')[1]}</p>}
+                                {newError && <p className='text-red-500'>{newError?.message}</p>}
                                 <div className="form-control mt-2">
-                                    <input className="btn btn-primary" type="submit" value={register ? "Submit" : "Log in"} />
+                                    <input required className="btn btn-primary" type="submit" value={register ? "Submit" : "Log in"} />
                                 </div>
                             </form>
                             <div className='text-center mt-2'>{register ? <div>Already have an account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(false) }}> Please login</button></div> : <div>Don't have any account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(true) }}> Register here</button></div>}</div>
                             <div className="divider">OR</div>
                             <button onClick={handleGoogleLogin} className="btn btn-outline">Sign in with google</button>
                         </div>
-                        {/* <div className='text-center mt-2'>{register ? <div>Already have an account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(false) }}> Please login</button></div> : <div>Don't have any account? <button className='text-primary' onClick={(e) => { e.preventDefault(); setRegister(true) }}> Register here</button></div>}</div>
-                        <div className="divider">OR</div>
-                        <button onClick={() => signInWithGoogle()} className="btn btn-outline">Sign in with google</button> */}
                     </div>
                 </div>
             </div>
