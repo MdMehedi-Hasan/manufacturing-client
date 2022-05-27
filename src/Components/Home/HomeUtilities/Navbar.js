@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const Navbar = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const [users, setUsers] = useState([])
   useEffect(() => {
     fetch("http://localhost:5000/user", {
@@ -16,8 +16,9 @@ const Navbar = () => {
       },
     })
       .then(res => res.json())
-      .then(data => setUsers(data))
-  }, [])
+      .then(data =>setUsers(data)
+      )
+  }, [user])
   return (
     <div className='py-5 bg-amber-500 text-white'>
       <div className="navbar justify-between">
@@ -29,9 +30,9 @@ const Navbar = () => {
             <ul tabIndex="0" className=" menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/blogs">Blogs</Link></li>
-              {!users?.role && <div className='flex items-center'><li><Link to="/dashboard">Dashboard</Link></li>
+              {(user && !users?.role) && <div className='flex items-center'><li><Link to="/dashboard">Dashboard</Link></li>
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
-              {users?.role && <div className='flex items-center'><li><Link to="/admin">Admin</Link></li>
+              {(user && users?.role) && <div className='flex items-center'><li><Link to="/admin">Admin</Link></li>
                 <label htmlFor="admin-drawer" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
               {!user && <li> <Link to="/login">Log in</Link></li>}
             </ul>
@@ -43,8 +44,9 @@ const Navbar = () => {
           <ul className="menu menu-horizontal p-0">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/blogs">Blogs</Link></li>
-            {!users?.role && <li><Link to="/dashboard">Dashboard</Link></li>}
-            {users?.role && <li><Link to="/admin">Admin</Link></li>}
+            {(user && !users?.role) && <li><Link to="/dashboard">Dashboard</Link></li>}
+            {(user && users?.role) && <li><Link to="/admin">Admin</Link></li>}
+            
             {!user && <li> <Link to="/login">Log in</Link></li>}
           </ul>
         </div>

@@ -2,27 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import SingleUser from './SingleUser';
 import 'react-toastify/dist/ReactToastify.css';
-import ClipLoader from "react-spinners/ClipLoader";
+// import ClipLoader from "react-spinners/ClipLoader";
 // import auth from '../../firebase.init';
 // import { useAuthState } from 'react-firebase-hooks/auth';
 
 const MakeAdmin = () => {
   // const [user] = useAuthState(auth);
   const [users, setUsers] = useState([])
-  const [reFetch,setReFetch] =useState(false)
-  // const uEmail = user.email
-  // const [adminEmail, setAdminEmail] = useState('')
+  const [reFetch,setReFetch] =useState(true)
   console.log(users);
   useEffect(() => {
     fetch("http://localhost:5000/users", {
       method: 'GET',
       headers: {
-        // email: `${uEmail}`,
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
       },
     })
       .then(res => res.json())
-      .then(data => setUsers(data))
+      .then(data => setUsers(data)
+      ,setReFetch(false))
   }, [reFetch])
   const makeAdmin = (email) => {
     fetch('http://localhost:5000/users/admin', {

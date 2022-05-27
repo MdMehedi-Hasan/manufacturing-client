@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 const MyOrders = () => {
     const [product, setProduct] = useState([])
-    console.log(product);
     useEffect(() => {
         fetch('http://localhost:5000/purchase')
             .then(res => res.json())
@@ -14,7 +13,7 @@ const MyOrders = () => {
                 <figure><img className='lg:w-24' src={p.productImage} alt="Album" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{p.productName}</h2>
-                    <p>{p.details}</p><div class="badge">Paid</div>
+                    <p>{p.details}</p><div className="badge">Paid</div>
                     <div className="card-actions justify-end items-center">
                         <button className="btn bg-red">Cancel</button>
                     </div>
