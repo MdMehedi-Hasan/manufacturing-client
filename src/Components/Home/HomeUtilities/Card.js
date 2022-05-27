@@ -1,9 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Card = ({ service }) => {
-    const { productName,productImage, details, productPrice,productQnty,productMinOrder } = service
-    console.log(service);
+const Card = ({ product }) => {
+    const { productName,productImage, details, productPrice,productQnty,productMinOrder } = product
     const navigate = useNavigate();
     const handleBuy = (id) => {
         navigate(`/purchase/${id}`)
@@ -19,7 +18,7 @@ const Card = ({ service }) => {
                 <p><span className='font-bold'>Available:</span> {productQnty} pcs <sub>(minimum {productMinOrder} pcs)</sub></p>
                 <p><span className='font-bold'>Price:</span> {productPrice}</p>
                 <div className="card-actions mx-auto w-2/4">
-                    <button onClick={() => handleBuy(service._id)} className="btn btn-outline border-white text-white w-full mt-5 hover:bg-amber-400 hover:text-black ">Buy Now</button>
+                    <button onClick={() => handleBuy(product._id)} className="btn btn-outline border-white text-white w-full mt-5 hover:bg-amber-400 hover:text-black ">Buy Now</button>
                 </div>
             </div>
         </div>

@@ -8,13 +8,12 @@ import Reviews from './HomeUtilities/Reviews';
 import MAp from './HomeUtilities/MAp';
 
 const Home = () => {
-    const [services, setServices] = useState([]);
+    const [products, setProducts] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/products')
         .then(res=>res.json())
-        .then(data=>setServices(data))
+        .then(data=>setProducts(data))
     }, [])
-    console.log(services)
     return (
         <div className='bg-sky-800'>
             <Banner></Banner>
@@ -22,13 +21,13 @@ const Home = () => {
             <h1 className='border-b-2 border-emerald-900 inline-block text-4xl text-amber-500 font-bold mb-16'>Products we manufacture</h1>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 '>
             {
-                services.map(service=><Card service={service} key={service._id}></Card>)
+                products.map(product=><Card product={product} key={product._id}></Card>)
             }
             </div>
             </div>
             <Categories></Categories>
             <Summary></Summary>
-            <Reviews></Reviews>
+            <Reviews></Reviews>     
             <MAp></MAp>
             <Footer></Footer>
             </div>

@@ -1,12 +1,23 @@
 import { Icon } from '@iconify/react';
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [users, setUsers] = useState([])
+  useEffect(() => {
+    fetch("http://localhost:5000/user", {
+      method: 'GET',
+      headers: {
+        email: `${user?.email}`,
+      },
+    })
+      .then(res => res.json())
+      .then(data => setUsers(data))
+  }, [])
   return (
     <div className='py-5 bg-amber-500 text-white'>
       <div className="navbar justify-between">
@@ -18,12 +29,11 @@ const Navbar = () => {
             <ul tabIndex="0" className=" menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/blogs">Blogs</Link></li>
-              {user && <div className='flex items-center'><li><Link to="/dashboard">Dashboard</Link></li>
-              <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
-              {user && <div className='flex items-center'><li><Link to="/admin">Admin</Link></li>
+              {!users?.role && <div className='flex items-center'><li><Link to="/dashboard">Dashboard</Link></li>
+                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
+              {users?.role && <div className='flex items-center'><li><Link to="/admin">Admin</Link></li>
                 <label htmlFor="admin-drawer" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
-              
-            {!user && <li> <Link to="/login">Log in</Link></li>}
+              {!user && <li> <Link to="/login">Log in</Link></li>}
             </ul>
           </div>
 
@@ -33,13 +43,13 @@ const Navbar = () => {
           <ul className="menu menu-horizontal p-0">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/blogs">Blogs</Link></li>
-            {user && <li><Link to="/dashboard">Dashboard</Link></li>}
-            {user && <li><Link to="/admin">Admin</Link></li>}
+            {!users?.role && <li><Link to="/dashboard">Dashboard</Link></li>}
+            {users?.role && <li><Link to="/admin">Admin</Link></li>}
             {!user && <li> <Link to="/login">Log in</Link></li>}
           </ul>
         </div>
         <div className="dropdown dropdown-end">
-         {user&& <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+          {user && <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full bg-white">
               {
                 user?.photoURL ? <img src={user?.photoURL} alt="" /> : <span className='inline-block mt-1 text-xl text-black'>{user?.email?.slice(0, 1)}</span>
@@ -53,8 +63,8 @@ const Navbar = () => {
                 My Profile
               </Link>
             </li>
-            <li><a>Settings</a></li>
-            <li>{user ? <span onClick={() => { signOut(auth);localStorage.removeItem('accessToken') }}>Log out</span> : <Link to="/login">Log in</Link>}</li>
+            {/* <li><a>Settings</a></li> */}
+            <li>{user ? <span onClick={() => { signOut(auth); localStorage.removeItem('accessToken') }}>Log out</span> : <Link to="/login">Log in</Link>}</li>
           </ul>
         </div>
       </div>
