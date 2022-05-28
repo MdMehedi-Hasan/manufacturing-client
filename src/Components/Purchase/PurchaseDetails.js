@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { Icon } from '@iconify/react';
 import image from '../../images/delivery-bg.png'
 const PurchaseDetails = () => {
     const [user] = useAuthState(auth);
     const [info, setInfo] = useState([])
-    console.log(info);
     const [error, setError] = useState('')
-    console.log(error);
-    const [products, setProducts] = useState();
+    const [products, setProducts] = useState([]);
+    const [orderInfo, setOrderInfo] = useState({})
+    console.log(orderInfo.insertedId);
     const { id } = useParams();
+    const navigate = useNavigate()
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
@@ -41,6 +42,7 @@ const PurchaseDetails = () => {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
+                setOrderInfo(data)
             })
         e.target.reset()
     }
@@ -73,6 +75,9 @@ const PurchaseDetails = () => {
             setError(false)
         )
     }
+    if (orderInfo?.insertedId) {
+        navigate(`/payment/${orderInfo.insertedId}`)
+    }
     return (
         <div className="hero">
             <div className="hero-content flex-col lg:flex-row items-start">
@@ -87,7 +92,6 @@ const PurchaseDetails = () => {
                         <input onChange={handleOrderQnt} type="text" name='orderQnty' className='input input-bordered w-24 mb-5' />
                         {error && <span className='mb-3 text-red-500'>({error})</span>}
                         <input type="submit" value="Place order" className="btn btn-warning w-28" disabled={error}/>
-                    {/* <button onClick={handleOrder} className="btn btn-primary">Place order</button> */}
                     </form>
                 </div>
                 <div className='lg:border-l-2 pl-2'>

@@ -17,6 +17,8 @@ import ManageProducts from './Components/Admin-dashboard/ManageProducts';
 import AddProducts from './Components/Admin-dashboard/AddProducts';
 import ManageOrders from './Components/Admin-dashboard/ManageOrders';
 import MakeAdmin from './Components/Admin-dashboard/MakeAdmin';
+import Payment from './Components/Payment/Payment';
+import MyPortfolio from './Components/MyPortfolio/MyPortfolio';
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
           <Route path="myprofile" element={<MyProfile />}></Route>
         </Route>
         <Route path="purchase/:id" element={<RequireAuth><PurchaseDetails /></RequireAuth>}></Route>
+        <Route path="payment/:id" element={<RequireAuth><Payment /></RequireAuth>}></Route>
+        <Route path="myportfolio" element={<MyPortfolio/>}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>

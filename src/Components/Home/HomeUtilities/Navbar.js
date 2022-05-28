@@ -35,6 +35,7 @@ const Navbar = () => {
               {(user && users?.role) && <div className='flex items-center'><li><Link to="/admin">Admin</Link></li>
                 <label htmlFor="admin-drawer" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
               {!user && <li> <Link to="/login">Log in</Link></li>}
+              <li><Link to="/myportfolio">My Portfolio</Link></li>
             </ul>
           </div>
 
@@ -44,6 +45,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal p-0">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/blogs">Blogs</Link></li>
+            <li><Link to="/myportfolio">My Portfolio</Link></li>
             {(user && !users?.role) && <li><Link to="/dashboard">Dashboard</Link></li>}
             {(user && users?.role) && <li><Link to="/admin">Admin</Link></li>}
             
