@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const WebCard = () => {
     return (
@@ -8,8 +9,8 @@ const WebCard = () => {
                 <div class="card-body">
                     <h2 class="card-title">Shoes!</h2>
                     <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
+                    <div class="card-actions justify-center">
+                        <button class="btn btn-primary"><Link to="https://assignment-10-d24c7.web.app/"> Visit website</Link> </button>
                     </div>
                 </div>
             </div>
