@@ -9,12 +9,12 @@ const ManageProducts = () => {
     console.log(updateDelete);
     // ===================================== Getting all products ====================================
     useEffect(() => {
-        fetch("http://localhost:5000/products")
+        fetch("https://blooming-ravine-00694.herokuapp.com/products")
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [updateDelete || updateQnty])
     const handleDelete = (id) => {
-        fetch('http://localhost:5000/products', {
+        fetch('https://blooming-ravine-00694.herokuapp.com/products', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,9 +49,10 @@ const ManageProducts = () => {
                 </thead>
                 <tbody>
                     {
-                        products.map(product => <SingleRow key={product._id} product={product} handleDelete={() => handleDelete(product._id)} setUpdateQnty={setUpdateQnty} updateQnty={updateQnty}></SingleRow>)
+                        products.map(product => <SingleRow key={product._id} product={product} setUpdateQnty={setUpdateQnty} updateQnty={updateQnty}></SingleRow>)
                     }
                 </tbody>
+                {/* handleDelete={() => handleDelete(product._id)} */}
             </table>
         </div >
     );

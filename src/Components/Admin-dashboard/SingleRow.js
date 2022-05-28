@@ -7,7 +7,7 @@ const SingleRow = ({ product, handleDelete, updateQnty, setUpdateQnty }) => {
     let updatedQuantity = parseInt(productQnty) + parseInt(newQuantity);
     const handleUpdate = (id) => {
         // console.log("newQuantity", newQuantity,id)
-        fetch('http://localhost:5000/products', {
+        fetch('https://blooming-ravine-00694.herokuapp.com/products', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ const SingleRow = ({ product, handleDelete, updateQnty, setUpdateQnty }) => {
             <td>{productQnty}</td>
             <td><input onChange={(e) => setNewQuantity(e.target.value)} type="number" className='input input-bordered' /><button onClick={() => handleUpdate(_id)} className="btn btn-ghost btn-xs">Update</button></td>
             <th>
-            <label htmlFor="delete-product" className="btn modal-button btn-accent">Delete</label>
+                <label htmlFor="delete-product" className="btn modal-button btn-accent">Delete</label>
             </th>
             {/* <!-- The button to open modal --> */}
             {/* <label htmlFor="my-modal-3" className="btn modal-button">open modal</label> */}

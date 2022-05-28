@@ -9,10 +9,10 @@ const MyProfile = () => {
     const [user, loading, error] = useAuthState(auth);
     const [form, setForm] = useState(false)
     const [info, setInfo] = useState([])
-    const [update,setUpdate]=useState(false)
+    const [update, setUpdate] = useState(false)
     console.log(info);
     useEffect(() => {
-        fetch("http://localhost:5000/users", {
+        fetch("https://blooming-ravine-00694.herokuapp.com/users", {
             method: "GET",
             headers: {
                 'email': `${user?.email}`
@@ -25,12 +25,12 @@ const MyProfile = () => {
         const number = e.target.number.value;
         const address = e.target.address.value;
         e.preventDefault();
-        fetch('http://localhost:5000/user/update', {
+        fetch('https://blooming-ravine-00694.herokuapp.com/user/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({email:user.email,number,address}),
+            body: JSON.stringify({ email: user.email, number, address }),
         })
             .then(response => response.json())
             .then(data => {

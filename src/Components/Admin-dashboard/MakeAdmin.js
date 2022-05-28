@@ -9,10 +9,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const MakeAdmin = () => {
   // const [user] = useAuthState(auth);
   const [users, setUsers] = useState([])
-  const [reFetch,setReFetch] =useState(true)
+  const [reFetch, setReFetch] = useState(true)
   console.log(users);
   useEffect(() => {
-    fetch("http://localhost:5000/users", {
+    fetch("https://blooming-ravine-00694.herokuapp.com/users", {
       method: 'GET',
       headers: {
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
@@ -20,10 +20,10 @@ const MakeAdmin = () => {
     })
       .then(res => res.json())
       .then(data => setUsers(data)
-      ,setReFetch(false))
+        , setReFetch(false))
   }, [reFetch])
   const makeAdmin = (email) => {
-    fetch('http://localhost:5000/users/admin', {
+    fetch('https://blooming-ravine-00694.herokuapp.com/users/admin', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -42,18 +42,18 @@ const MakeAdmin = () => {
       })
   }
   const handleDelete = (email) => {
-    fetch('http://localhost:5000/user/delete', {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({email}),
-        })
-            .then(response => response.json())
-            .then(data => {
-              console.log('Success:', data);
-              setReFetch(true);
-            })
+    fetch('https://blooming-ravine-00694.herokuapp.com/user/delete', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        setReFetch(true);
+      })
   }
   return (
     <div className="overflow-x-auto">
@@ -70,7 +70,7 @@ const MakeAdmin = () => {
         </thead>
         <tbody>
           {
-            users?.map(user => <SingleUser key={user._id} user={user} makeAdmin={() => makeAdmin(user.email)} handleDelete={()=>handleDelete(user.email)} />)
+            users?.map(user => <SingleUser key={user._id} user={user} makeAdmin={() => makeAdmin(user.email)} handleDelete={() => handleDelete(user.email)} />)
           }
         </tbody>
       </table>

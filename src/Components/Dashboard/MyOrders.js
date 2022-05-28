@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 import ProductsRow from './ProductsRow';
 
 const MyOrders = () => {
+  const [user] = useAuthState(auth);
   const [product, setProduct] = useState([])
-  const [reFetch,setReFetch] = useState(false)
+  const [reFetch, setReFetch] = useState(false)
   useEffect(() => {
-    fetch('http://localhost:5000/purchase')
+    fetch('https://blooming-ravine-00694.herokuapp.com/purchaseIndiviual', {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'email': `${user?.email}`,
+      },
+    })
       .then(res => res.json())
       .then(data => setProduct(data))
   }, [reFetch])
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/purchase/${id}`, {
+    fetch(`https://blooming-ravine-00694.herokuapp.com/purchase/${id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({id}),
+      body: JSON.stringify({ id }),
     })
       .then(response => response.json())
       .then(data => {
@@ -28,7 +37,7 @@ const MyOrders = () => {
           else {
             setReFetch(true)
           }
-      }
+        }
       })
   }
   return (

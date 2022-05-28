@@ -5,7 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CheckoutForm = ({ productDetails,orderDetails }) => {
+const CheckoutForm = ({ productDetails, orderDetails }) => {
     const [user] = useAuthState(auth);
     const stripe = useStripe()
     const elements = useElements()
@@ -13,13 +13,13 @@ const CheckoutForm = ({ productDetails,orderDetails }) => {
     const [success, setSuccess] = useState('')
     const [clientSecret, setClientSecret] = useState("");
     const [transactionId, setTransactionId] = useState('');
-console.log(orderDetails);
+    console.log(orderDetails);
     const { productName, productPrice } = productDetails
     let price = parseInt(productPrice)
 
     useEffect(() => {
         if (price) {
-            fetch("http://localhost:5000/create-payment-intent", {
+            fetch("https://blooming-ravine-00694.herokuapp.com/create-payment-intent", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ price }),
@@ -79,9 +79,9 @@ console.log(orderDetails);
             setTransactionId(paymentIntent.id);
             const purchaseDetails = {
                 transactionId: paymentIntent.id,
-                id:orderDetails._id
+                id: orderDetails._id
             }
-            fetch(`http://localhost:5000/purchase/${productDetails._id}`, {
+            fetch(`https://blooming-ravine-00694.herokuapp.com/purchase/${productDetails._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

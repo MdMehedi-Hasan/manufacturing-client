@@ -7,9 +7,9 @@ const AddReviews = () => {
   console.log(user);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const feedback = {name:user?.displayName,email:user.email,image:user?.photoURL,feedback:e?.target?.feedback?.value,ratings:e?.target?.ratings?.value}
+    const feedback = { name: user?.displayName, email: user.email, image: user?.photoURL, feedback: e?.target?.feedback?.value, ratings: e?.target?.ratings?.value }
     console.log('clicked');
-    fetch('http://localhost:5000/reviews', {
+    fetch('https://blooming-ravine-00694.herokuapp.com/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const AddReviews = () => {
               <input type="number" name="ratings" placeholder='Ratings (1-5)' className='input input-bordered mt-5' />
             </div>
             <div className=" mt-6">
-              <input type="submit"  value="Submit" className="btn btn-accent" />
+              <input type="submit" value="Submit" className="btn btn-accent" />
             </div>
           </form>
         </div>

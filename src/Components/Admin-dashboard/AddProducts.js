@@ -12,7 +12,7 @@ const AddProducts = () => {
         const productDescription = e.target.description.value;
         const product = { productName, productPrice, productQnty, productMinOrder, productImage, productDescription }
         console.log(product);
-        fetch('http://localhost:5000/products', {
+        fetch('https://blooming-ravine-00694.herokuapp.com/products', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',

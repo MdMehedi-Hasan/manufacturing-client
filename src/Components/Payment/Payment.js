@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import {Elements} from '@stripe/react-stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -11,11 +11,11 @@ const stripePromise = loadStripe('pk_test_51L49RlFe25ae7mIGo8kRbbSJjD0R3QjaU9r8J
 const Payment = () => {
     const [user, loading, error] = useAuthState(auth);
     const [orderDetails, setOrderDetails] = useState({})
-    const [productDetails,setProductDetails]=useState({})
+    const [productDetails, setProductDetails] = useState({})
     // console.log(orderDetails);
     const { id } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:5000/purchase/${id}`)
+        fetch(`https://blooming-ravine-00694.herokuapp.com/purchase/${id}`)
             .then(res => res.json())
             .then(data => {
                 setOrderDetails(data);
@@ -39,7 +39,7 @@ const Payment = () => {
             <div className="card max-w-md mx-auto">
                 <div className="card-body">
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm productDetails={productDetails} orderDetails={orderDetails}/>
+                        <CheckoutForm productDetails={productDetails} orderDetails={orderDetails} />
                     </Elements>
                 </div>
             </div>

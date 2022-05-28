@@ -9,14 +9,14 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
   const [users, setUsers] = useState([])
   useEffect(() => {
-    fetch("http://localhost:5000/user", {
+    fetch("https://blooming-ravine-00694.herokuapp.com/user", {
       method: 'GET',
       headers: {
         email: `${user?.email}`,
       },
     })
       .then(res => res.json())
-      .then(data =>setUsers(data)
+      .then(data => setUsers(data)
       )
   }, [user])
   return (
@@ -48,7 +48,7 @@ const Navbar = () => {
             <li><Link to="/myportfolio">My Portfolio</Link></li>
             {(user && !users?.role) && <li><Link to="/dashboard">Dashboard</Link></li>}
             {(user && users?.role) && <li><Link to="/admin">Admin</Link></li>}
-            
+
             {!user && <li> <Link to="/login">Log in</Link></li>}
           </ul>
         </div>

@@ -11,32 +11,34 @@ const PurchaseDetails = () => {
     const [products, setProducts] = useState([]);
     const [orderInfo, setOrderInfo] = useState({})
     const { id } = useParams();
+    const email = user?.email
+    const status = 'pending'
     const navigate = useNavigate()
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://blooming-ravine-00694.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
     useEffect(() => {
-        fetch('http://localhost:5000/user', {
+        fetch('https://blooming-ravine-00694.herokuapp.com/user', {
             method: "GET",
             headers: {
                 'authorization': `${localStorage.getItem('accessToken')}`,
-                'email':`${user.email}`
+                'email': `${user.email}`
             }
         })
-        .then(res=>res.json())
-        .then(data=>setInfo(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setInfo(data))
+    }, [])
     const handleOrder = (e) => {
         e.preventDefault();
         const orderQnty = e.target.orderQnty.value;
-        fetch('http://localhost:5000/purchase', {
+        fetch('https://blooming-ravine-00694.herokuapp.com/purchase', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({products,orderQnty}),
+            body: JSON.stringify({ products, orderQnty, email, status }),
         })
             .then(response => response.json())
             .then(data => {
@@ -50,12 +52,12 @@ const PurchaseDetails = () => {
         const address = e.target.address.value
         const number = e.target.number.value
         const email = user.email
-        fetch('http://localhost:5000/user/update', {
+        fetch('https://blooming-ravine-00694.herokuapp.com/user/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({address,number,email}),
+            body: JSON.stringify({ address, number, email }),
         })
             .then(response => response.json())
             .then(data => {
@@ -90,7 +92,7 @@ const PurchaseDetails = () => {
                     <form onSubmit={handleOrder} className="flex flex-col">
                         <input onChange={handleOrderQnt} type="text" name='orderQnty' className='input input-bordered w-24 mb-5' />
                         {error && <span className='mb-3 text-red-500'>({error})</span>}
-                        <input type="submit" value="Place order" className="btn btn-warning w-28" disabled={error}/>
+                        <input type="submit" value="Place order" className="btn btn-warning w-28" disabled={error} />
                     </form>
                 </div>
                 <div className='lg:border-l-2 pl-2'>
@@ -98,8 +100,8 @@ const PurchaseDetails = () => {
                     <div>
                         <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="bi:person-fill" /></span><span>{user?.displayName}</span></div>
                         <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="dashicons:email" /></span><span>{user?.email}</span></div>
-                        <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="carbon:phone-filled" /></span><span>{info? info.number : "N/A"}</span></div>
-                        <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="el:map-marker" /></span><span>{info? info.address : "N/A"}</span></div>
+                        <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="carbon:phone-filled" /></span><span>{info ? info.number : "N/A"}</span></div>
+                        <div className='flex items-center'><span className='text-orange-500 mr-2'><Icon icon="el:map-marker" /></span><span>{info ? info.address : "N/A"}</span></div>
                     </div>
                     <div className="card flex-shrink-0 max-w-sm">
                         <div className="card-body p-2 mt-5">
