@@ -2,34 +2,36 @@ import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const CheckoutForm = ({ productDetails }) => {
+const CheckoutForm = ({ productDetails,orderDetails }) => {
     const [user] = useAuthState(auth);
-    console.log(productDetails);
     const stripe = useStripe()
     const elements = useElements()
     const [cardError, setCardError] = useState('')
-    const [success,setSuccess] = useState('')
+    const [success, setSuccess] = useState('')
     const [clientSecret, setClientSecret] = useState("");
-
+    const [transactionId, setTransactionId] = useState('');
+console.log(orderDetails);
     const { productName, productPrice } = productDetails
     let price = parseInt(productPrice)
 
     useEffect(() => {
         if (price) {
             fetch("http://localhost:5000/create-payment-intent", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ price }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data?.clientSecret) {
-                    setClientSecret(data.clientSecret)
-                }
-            });
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ price }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data?.clientSecret) {
+                        setClientSecret(data.clientSecret)
+                    }
+                });
         }
-        
+
     }, [productPrice]);
 
     const handleSubmit = async (event) => {
@@ -50,6 +52,8 @@ const CheckoutForm = ({ productDetails }) => {
         } else {
             setCardError('')
         }
+        // ===============================
+
 
         setSuccess('');
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
@@ -59,7 +63,7 @@ const CheckoutForm = ({ productDetails }) => {
                     card: card,
                     billing_details: {
                         name: productName,
-                        email:user?.email,
+                        email: user?.email,
                     },
                 },
             },
@@ -71,10 +75,28 @@ const CheckoutForm = ({ productDetails }) => {
             setCardError('')
             console.log(paymentIntent);
             setSuccess('Congratulations! Your payment is completed.')
+            toast.success(`Success!Transaction Id:${paymentIntent.id}`)
+            setTransactionId(paymentIntent.id);
+            const purchaseDetails = {
+                transactionId: paymentIntent.id,
+                id:orderDetails._id
+            }
+            fetch(`http://localhost:5000/purchase/${productDetails._id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(purchaseDetails),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
         }
     }
     return (
         <div>
+            <ToastContainer />
             <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{
@@ -97,7 +119,8 @@ const CheckoutForm = ({ productDetails }) => {
                 </button>
             </form>
             {cardError && <p className='text-red-600'>{cardError}</p>}
-            {success && <p className='text-green-600'>{success}</p>}
+            {success && <div><p className='text-green-600'>{success}</p>
+                <p className='text-amber-600'>Transaction Id:{transactionId}</p></div>}
         </div>
     );
 };

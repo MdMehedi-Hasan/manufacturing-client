@@ -1,26 +1,58 @@
 import React, { useEffect, useState } from 'react';
+import ProductsRow from './ProductsRow';
 
 const MyOrders = () => {
-    const [product, setProduct] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/purchase')
-            .then(res => res.json())
-            .then(data => setProduct(data))
-    }, [])
-    return (
-        <div className='bg-cyan-900'>
-            {product.map(p => <div className="card lg:card-side bg-white shadow-xl mb-5">
-                <figure><img className='lg:w-24' src={p.productImage} alt="Album" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">{p.productName}</h2>
-                    <p>{p.details}</p><div className="badge">Paid</div>
-                    <div className="card-actions justify-end items-center">
-                        <button className="btn bg-red">Cancel</button>
-                    </div>
-                </div>
-            </div>)}
-        </div>
-    );
+  const [product, setProduct] = useState([])
+  const [reFetch,setReFetch] = useState(false)
+  useEffect(() => {
+    fetch('http://localhost:5000/purchase')
+      .then(res => res.json())
+      .then(data => setProduct(data))
+  }, [reFetch])
+  const handleDelete = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/purchase/${id}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({id}),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        if (data.acknowledged == true) {
+          if (reFetch) {
+            setReFetch(false)
+          }
+          else {
+            setReFetch(true)
+          }
+      }
+      })
+  }
+  return (
+    <div className='bg-cyan-900'>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Product Name</th>
+              <th>Price (per unit)</th>
+              <th>Total amount</th>
+              <th>Transaction id</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {product.map(p => <ProductsRow key={p._id} product={p} handleDelete={() => handleDelete(p._id)}></ProductsRow>)}
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  );
 };
 
 export default MyOrders;

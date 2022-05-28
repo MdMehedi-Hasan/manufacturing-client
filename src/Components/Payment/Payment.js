@@ -12,7 +12,7 @@ const Payment = () => {
     const [user, loading, error] = useAuthState(auth);
     const [orderDetails, setOrderDetails] = useState({})
     const [productDetails,setProductDetails]=useState({})
-    console.log(orderDetails);
+    // console.log(orderDetails);
     const { id } = useParams();
     useEffect(() => {
         fetch(`http://localhost:5000/purchase/${id}`)
@@ -39,7 +39,7 @@ const Payment = () => {
             <div className="card max-w-md mx-auto">
                 <div className="card-body">
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm productDetails={productDetails}/>
+                        <CheckoutForm productDetails={productDetails} orderDetails={orderDetails}/>
                     </Elements>
                 </div>
             </div>

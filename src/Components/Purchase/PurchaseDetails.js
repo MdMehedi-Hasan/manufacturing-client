@@ -10,7 +10,6 @@ const PurchaseDetails = () => {
     const [error, setError] = useState('')
     const [products, setProducts] = useState([]);
     const [orderInfo, setOrderInfo] = useState({})
-    console.log(orderInfo.insertedId);
     const { id } = useParams();
     const navigate = useNavigate()
     useEffect(() => {
