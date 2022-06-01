@@ -9,9 +9,10 @@ const MyProfile = () => {
     const [user, loading, error] = useAuthState(auth);
     const [form, setForm] = useState(false)
     const [info, setInfo] = useState([])
+    console.log(info);
     const [update, setUpdate] = useState(false)
     useEffect(() => {
-        fetch("https://blooming-ravine-00694.herokuapp.com/users", {
+        fetch("https://blooming-ravine-00694.herokuapp.com/user", {
             method: "GET",
             headers: {
                 'email': `${user?.email}`
@@ -46,9 +47,9 @@ const MyProfile = () => {
                     </div>
                     <button onClick={() => setForm(true)} className="btn btn-accent mt-5">Edit profile</button>
                     <div className='mt-5'>
-                        <div className='flex items-center mb-3'><Icon icon="ic:baseline-person" /><span className='ml-2'>{user.displayName}</span></div>
+                        <div className='flex items-center mb-3'><Icon icon="ic:baseline-person" /><span className='ml-2'>{user.displayName? user.displayName : "N/A"}</span></div>
                         <div className='flex items-center mb-3'><Icon icon="ic:baseline-email" /><span className='ml-2'>{user.email}</span></div>
-                        <div className='flex items-center'><Icon icon="carbon:phone" /><span className='ml-2'>{info[0]?.number}</span></div>
+                        <div className='flex items-center'><Icon icon="carbon:phone" /><span className='ml-2'>{info?.number}</span></div>
                     </div>
                     <button className="btn btn-outline btn-accent text-white" onClick={() =>  signOut(auth) }> Log out</button>
                 </div>
@@ -74,10 +75,10 @@ const MyProfile = () => {
                 <div>
                     <h1 className=' pt-10 text-5xl'>Details information:</h1>
                     <div className='mt-16'>
-                        <div className='flex items-center mb-10'><span className='font-bold text-xl'>User name:</span><span className='ml-2'>{user.displayName}</span></div>
+                        <div className='flex items-center mb-10'><span className='font-bold text-xl'>User name:</span><span className='ml-2'>{user.displayName ? user.displayName : "N/A"}</span></div>
                         <div className='flex items-center mb-10'><span className='font-bold text-xl'>Email:</span><span className='ml-2'>{user.email}</span></div>
-                        <div className='flex items-center mb-10'><span className='font-bold text-xl'>Phone number:</span> &nbsp; {info ? <span className='ml-2 text-white'>{info[0]?.number}</span> : "N/A"}</div>
-                        <div className='flex items-center mb-10'><span className='font-bold text-xl'>Address:</span>&nbsp; {info ? <span className='ml-2 text-white'>{info[0]?.address}</span> : "N/A"}</div>
+                        <div className='flex items-center mb-10'><span className='font-bold text-xl'>Phone number:</span> &nbsp; {info ? <span className='ml-2 text-white'>{info?.number}</span> : "N/A"}</div>
+                        <div className='flex items-center mb-10'><span className='font-bold text-xl'>Address:</span>&nbsp; {info ? <span className='ml-2 text-white'>{info?.address}</span> : "N/A"}</div>
                     </div>
                 </div>
             </div>}

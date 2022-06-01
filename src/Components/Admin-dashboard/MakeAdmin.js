@@ -9,18 +9,15 @@ import 'react-toastify/dist/ReactToastify.css';
 const MakeAdmin = () => {
   // const [user] = useAuthState(auth);
   const [users, setUsers] = useState([])
-  const [reFetch, setReFetch] = useState(true)
+  const [deleteUser, setDeleteUser] = useState(false)
+  const [admin,setAdmin] =useState(false)
   useEffect(() => {
-    fetch("https://blooming-ravine-00694.herokuapp.com/users"/* , {
-      method: 'GET',
-      headers: {
-        'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-      },
-    } */)
+    fetch("https://blooming-ravine-00694.herokuapp.com/users")
       .then(res => res.json())
-      .then(data => setUsers(data)
-        , setReFetch(false))
-  }, [reFetch])
+      .then(data =>
+         setUsers(data),
+        //  setDeleteUser(true)
+      )}, [admin])
   const makeAdmin = (email) => {
     fetch('https://blooming-ravine-00694.herokuapp.com/users/admin', {
       method: 'PUT',
@@ -32,11 +29,13 @@ const MakeAdmin = () => {
       .then(response => response.json())
       .then(data => {
         if (data.modifiedCount != 0) {
-          toast.success(`Created ${email} as admin!`)
+          toast.success(`Created ${email} as admin!`);
+          setAdmin(!admin)
         }
-        else (
-          toast.error(`${email} is already an admin!`)
-        )
+        else { 
+          toast.error(`${email} is already an admin!`);
+          setAdmin(false)
+      }
       })
   }
   const handleDelete = (email) => {
@@ -49,7 +48,7 @@ const MakeAdmin = () => {
     })
       .then(response => response.json())
       .then(data => {
-        setReFetch(true);
+        setAdmin(!admin)
       })
   }
   return (
