@@ -44,17 +44,17 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
     useEffect(() => {
         if (user || gUser || newUser) {
-            fetch('http://localhost:5000/users', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ existingUser }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                
+            fetch('https://blooming-ravine-00694.herokuapp.com/users', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ existingUser }),
             })
+                .then(response => response.json())
+                .then(data => {
+
+                })
             navigate(from, { replace: true });
         }
     }, [user || gUser || newUser])

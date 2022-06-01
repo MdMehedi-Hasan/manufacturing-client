@@ -10,15 +10,15 @@ const Navbar = () => {
   const [users, setUsers] = useState([])
   useEffect(() => {
     if (user) {
-      fetch("http://localhost:5000/user", {
-      method: 'GET',
-      headers: {
-        email: `${user?.email}`,
-      },
-    })
-      .then(res => res.json())
-      .then(data => setUsers(data)
-      )
+      fetch("https://blooming-ravine-00694.herokuapp.com/user", {
+        method: 'GET',
+        headers: {
+          email: `${user?.email}`,
+        },
+      })
+        .then(res => res.json())
+        .then(data => setUsers(data)
+        )
     }
   }, [user])
   return (
