@@ -11,7 +11,7 @@ const AddProducts = () => {
         const productImage = e.target.image.value;
         const productDescription = e.target.description.value;
         const product = { productName, productPrice, productQnty, productMinOrder, productImage, productDescription }
-        console.log(product);
+
         fetch('https://blooming-ravine-00694.herokuapp.com/products', {
             method: 'POST', // or 'PUT'
             headers: {
@@ -21,7 +21,6 @@ const AddProducts = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
             })
         e.target.reset();
     }

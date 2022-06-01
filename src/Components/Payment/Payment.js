@@ -12,7 +12,6 @@ const Payment = () => {
     const [user, loading, error] = useAuthState(auth);
     const [orderDetails, setOrderDetails] = useState({})
     const [productDetails, setProductDetails] = useState({})
-    // console.log(orderDetails);
     const { id } = useParams();
     useEffect(() => {
         fetch(`https://blooming-ravine-00694.herokuapp.com/purchase/${id}`)

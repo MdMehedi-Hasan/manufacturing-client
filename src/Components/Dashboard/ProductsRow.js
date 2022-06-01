@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 const ProductsRow = ({ product,handleDelete }) => {
   const [details,setDetails]=useState([])
-  console.log(product);
-  // console.log(product);
   useEffect(() => {
     fetch(`https://blooming-ravine-00694.herokuapp.com/purchase/${product._id}`)
     .then(res=>res.json())

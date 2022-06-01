@@ -4,11 +4,10 @@ import auth from '../../firebase.init';
 
 const AddReviews = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
   const handleSubmit = (e) => {
     e.preventDefault();
     const feedback = { name: user?.displayName, email: user.email, image: user?.photoURL, feedback: e?.target?.feedback?.value, ratings: e?.target?.ratings?.value }
-    console.log('clicked');
+
     fetch('https://blooming-ravine-00694.herokuapp.com/reviews', {
       method: 'POST',
       headers: {
@@ -18,7 +17,6 @@ const AddReviews = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
       })
     e.target.reset();
   }

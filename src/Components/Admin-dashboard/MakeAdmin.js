@@ -10,7 +10,6 @@ const MakeAdmin = () => {
   // const [user] = useAuthState(auth);
   const [users, setUsers] = useState([])
   const [reFetch, setReFetch] = useState(true)
-  console.log(users);
   useEffect(() => {
     fetch("https://blooming-ravine-00694.herokuapp.com/users"/* , {
       method: 'GET',
@@ -32,7 +31,6 @@ const MakeAdmin = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
         if (data.modifiedCount != 0) {
           toast.success(`Created ${email} as admin!`)
         }
@@ -51,7 +49,6 @@ const MakeAdmin = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
         setReFetch(true);
       })
   }

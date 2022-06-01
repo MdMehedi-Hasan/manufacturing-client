@@ -6,7 +6,6 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([]);
     const [updateDelete, setUpdateDelete] = useState(false)
     const [updateQnty, setUpdateQnty] = useState(false)
-    console.log(updateDelete);
     // ===================================== Getting all products ====================================
     useEffect(() => {
         fetch("https://blooming-ravine-00694.herokuapp.com/products")
@@ -23,7 +22,6 @@ const ManageProducts = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
                 if (data.acknowledged == true) {
                     if (updateDelete) {
                         setUpdateDelete(false)
@@ -49,7 +47,7 @@ const ManageProducts = () => {
                 </thead>
                 <tbody>
                     {
-                        products.map(product => <SingleRow key={product._id} product={product} setUpdateQnty={setUpdateQnty} updateQnty={updateQnty}></SingleRow>)
+                        products.map(product => <SingleRow key={product._id} product={product} setUpdateQnty={setUpdateQnty} updateQnty={updateQnty} handleDelete={() => handleDelete(product._id)}></SingleRow>)
                     }
                 </tbody>
                 {/* handleDelete={() => handleDelete(product._id)} */}

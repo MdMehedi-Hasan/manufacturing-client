@@ -13,7 +13,6 @@ const CheckoutForm = ({ productDetails, orderDetails }) => {
     const [success, setSuccess] = useState('')
     const [clientSecret, setClientSecret] = useState("");
     const [transactionId, setTransactionId] = useState('');
-    console.log(orderDetails);
     const { productName, productPrice } = productDetails
     let price = parseInt(productPrice)
 
@@ -73,7 +72,6 @@ const CheckoutForm = ({ productDetails, orderDetails }) => {
         }
         else {
             setCardError('')
-            console.log(paymentIntent);
             setSuccess('Congratulations! Your payment is completed.')
             toast.success(`Success!Transaction Id:${paymentIntent.id}`)
             setTransactionId(paymentIntent.id);
@@ -90,7 +88,6 @@ const CheckoutForm = ({ productDetails, orderDetails }) => {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log('Success:', data);
                 })
         }
     }

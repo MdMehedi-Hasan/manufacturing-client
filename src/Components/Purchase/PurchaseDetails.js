@@ -42,7 +42,6 @@ const PurchaseDetails = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
                 setOrderInfo(data)
             })
         e.target.reset()
@@ -61,7 +60,6 @@ const PurchaseDetails = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
             })
         e.target.reset();
     }

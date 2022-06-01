@@ -3,14 +3,12 @@ import React, { useEffect, useState } from 'react';
 const ManageOrders = () => {
     const [orders, setOrders] = useState([])
     const [reFetch, setRefetch] = useState(false)
-    console.log(orders);
     useEffect(() => {
         fetch('https://blooming-ravine-00694.herokuapp.com/purchase')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [reFetch])
     const handleDelete = (id) => {
-        console.log(id);
         fetch(`https://blooming-ravine-00694.herokuapp.com/purchase/${id}`, {
             method: 'DELETE',
             headers: {
@@ -20,7 +18,6 @@ const ManageOrders = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
                 if (data.acknowledged == true) {
                     if (reFetch) {
                         setRefetch(false)
@@ -32,7 +29,6 @@ const ManageOrders = () => {
             })
     }
     const handleUpdateStatus = (id) => {
-        console.log(id);
         fetch('https://blooming-ravine-00694.herokuapp.com/updateStatus', {
             method: 'PUT',
             headers: {
@@ -42,7 +38,6 @@ const ManageOrders = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
                 if (data.acknowledged == true) {
                     if (reFetch) {
                         setRefetch(false)

@@ -19,7 +19,6 @@ const MyOrders = () => {
       .then(data => setProduct(data))
   }, [reFetch])
   const handleDelete = (id) => {
-    console.log(id);
     fetch(`https://blooming-ravine-00694.herokuapp.com/purchase/${id}`, {
       method: "DELETE",
       headers: {
@@ -29,7 +28,6 @@ const MyOrders = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
         if (data.acknowledged == true) {
           if (reFetch) {
             setReFetch(false)

@@ -10,7 +10,6 @@ const MyProfile = () => {
     const [form, setForm] = useState(false)
     const [info, setInfo] = useState([])
     const [update, setUpdate] = useState(false)
-    console.log(info);
     useEffect(() => {
         fetch("https://blooming-ravine-00694.herokuapp.com/users", {
             method: "GET",
@@ -34,7 +33,6 @@ const MyProfile = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
                 setUpdate(true);
             })
         setForm(false)
