@@ -52,7 +52,7 @@ const MyProfile = () => {
                         <div className='flex items-center mb-3'><Icon icon="ic:baseline-email" /><span className='ml-2'>{user.email}</span></div>
                         <div className='flex items-center'><Icon icon="carbon:phone" /><span className='ml-2'>{info[0]?.number}</span></div>
                     </div>
-                    <button className="btn btn-outline btn-accent text-white" onClick={() => { signOut(auth); localStorage.removeItem('accessToken') }}> Log out</button>
+                    <button className="btn btn-outline btn-accent text-white" onClick={() =>  signOut(auth) }> Log out</button>
                 </div>
             </div>
             {form ? <div>

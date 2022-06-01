@@ -12,12 +12,12 @@ const MakeAdmin = () => {
   const [reFetch, setReFetch] = useState(true)
   console.log(users);
   useEffect(() => {
-    fetch("https://blooming-ravine-00694.herokuapp.com/users", {
+    fetch("https://blooming-ravine-00694.herokuapp.com/users"/* , {
       method: 'GET',
       headers: {
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
       },
-    })
+    } */)
       .then(res => res.json())
       .then(data => setUsers(data)
         , setReFetch(false))

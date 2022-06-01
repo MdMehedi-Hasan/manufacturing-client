@@ -9,7 +9,8 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
   const [users, setUsers] = useState([])
   useEffect(() => {
-    fetch("https://blooming-ravine-00694.herokuapp.com/user", {
+    if (user) {
+      fetch("http://localhost:5000/user", {
       method: 'GET',
       headers: {
         email: `${user?.email}`,
@@ -18,6 +19,7 @@ const Navbar = () => {
       .then(res => res.json())
       .then(data => setUsers(data)
       )
+    }
   }, [user])
   return (
     <div className='py-5 bg-amber-500 text-white'>
@@ -68,7 +70,7 @@ const Navbar = () => {
               </Link>
             </li>
             {/* <li><a>Settings</a></li> */}
-            <li>{user ? <span onClick={() => { signOut(auth); localStorage.removeItem('accessToken') }}>Log out</span> : <Link to="/login">Log in</Link>}</li>
+            <li>{user ? <span onClick={() => signOut(auth)}>Log out</span> : <Link to="/login">Log in</Link>}</li>
           </ul>
         </div>
       </div>

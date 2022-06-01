@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init'
-import useToken from '../../hooks/useToken';
+// import useToken from '../../hooks/useToken';
 
 const Login = () => {
+    const [existingUser] = useAuthState(auth);
     const [register, setRegister] = useState(false);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
@@ -19,8 +20,7 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    const [token] = useToken(user || gUser || newUser)
-    console.log(newError);
+    // const [token] = useToken(user || gUser || newUser)
     const handleRegister = (e) => {
         e.preventDefault();
         const name = e?.target?.name?.value;
@@ -43,10 +43,21 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
     useEffect(() => {
-        if (token) {
+        if (user || gUser || newUser) {
+            fetch('http://localhost:5000/users', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ existingUser }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                
+            })
             navigate(from, { replace: true });
         }
-    }, [token])
+    }, [user || gUser || newUser])
     return (
         <div>
             <div className="hero lg:block">
