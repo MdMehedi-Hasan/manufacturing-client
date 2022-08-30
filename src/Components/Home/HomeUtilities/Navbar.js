@@ -23,7 +23,7 @@ const Navbar = () => {
   }, [user])
   return (
     <div className='py-5 bg-amber-500 text-white'>
-      <div className="navbar justify-between">
+      <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -31,27 +31,35 @@ const Navbar = () => {
             </label>
             <ul tabIndex="0" className=" menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
               <li><Link to="/">Home</Link></li>
+              <li><Link to="/blogs">About</Link></li>
+              <li><Link to="/blogs">Carrer</Link></li>
+              <li><Link to="/blogs">Contact</Link></li>
+              <li><Link to="/blogs">FAQ</Link></li>
               <li><Link to="/blogs">Blogs</Link></li>
+              <li><Link to="/myportfolio">Portfolio</Link></li>
               {(user && !users?.role) && <div className='flex items-center'><li><Link to="/dashboard">Dashboard</Link></li>
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
               {(user && users?.role) && <div className='flex items-center'><li><Link to="/admin">Admin</Link></li>
                 <label htmlFor="admin-drawer" className="btn btn-primary drawer-button lg:hidden bg-white text-black border-0 w-1">&gt;</label></div>}
               {!user && <li> <Link to="/login">Log in</Link></li>}
-              <li><Link to="/myportfolio">My Portfolio</Link></li>
             </ul>
           </div>
 
           <Link to='/' className="btn btn-ghost normal-case text-xl"><span className='text-black text-4xl'><Icon icon="entypo:tools" /></span> &nbsp;<span className='text-black'>Wrench &amp; </span>&nbsp;Screws</Link>
         </div>
         <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/blogs">Blogs</Link></li>
-            <li><Link to="/myportfolio">My Portfolio</Link></li>
+          <ul className="menu menu-horizontal text-lg bold font-semibold">
+            <li><Link className="p-3" to="/">Home</Link></li>
+            <li><Link className="p-3" to="/blogs">About</Link></li>
+            <li><Link className="p-3" to="/blogs">Carrer</Link></li>
+            <li><Link className="p-3" to="/blogs">Contact</Link></li>
+            <li><Link className="p-3" to="/blogs">FAQ</Link></li>
+            <li><Link className="p-3" to="/blogs">Blogs</Link></li>
+            <li><Link className="p-3" to="/myportfolio">Portfolio</Link></li>
             {(user && !users?.role) && <li><Link to="/dashboard">Dashboard</Link></li>}
             {(user && users?.role) && <li><Link to="/admin">Admin</Link></li>}
 
-            {!user && <li> <Link to="/login">Log in</Link></li>}
+            {!user && <li> <Link className="p-3" to="/login">Log in</Link></li>}
           </ul>
         </div>
         <div className="dropdown dropdown-end">

@@ -3,6 +3,7 @@ import banner from '../../../images/banner.png'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './Banner.css'
+import { Icon } from '@iconify/react';
 
 
 const Banner = () => {
@@ -17,6 +18,7 @@ const Banner = () => {
                 </div>
                 <p data-aos="fade-right" data-aos-once="false" data-aos-duration="1000" data-aos-easing="ease-in"
                     data-aos-mirror="true" data-aos-delay="500" className='lg:ml-10 text-center lg:text-left text-white leading-8 mt-10 lg:w-3/4'>From manufacturing tools, such as box wrenches and other work tools, <br /> electric cutting tools such as cable cutters and various industrial edged tools <br /> to machine parts, we provide development, design, manufacturing, inspection <br /> and packaging services of all OEM, import and export products.</p>
+                <button className="btn btn-outline btn-warning lg:ml-10 mt-5">Learn More<Icon className="text-lg ml-2" icon="akar-icons:circle-chevron-right-fill" /></button>
             </div>
         </div>
     );
