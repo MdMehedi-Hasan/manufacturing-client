@@ -22,7 +22,7 @@ const Navbar = () => {
     }
   }, [user])
   return (
-    <div className='py-5 bg-amber-500 text-white'>
+    <div className='py-5 bg-amber-500 text-white lora'>
       <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
@@ -48,7 +48,7 @@ const Navbar = () => {
           <Link to='/' className="btn btn-ghost normal-case text-xl"><span className='text-black text-4xl'><Icon icon="entypo:tools" /></span> &nbsp;<span className='text-black'>Wrench &amp; </span>&nbsp;Screws</Link>
         </div>
         <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal text-lg bold font-semibold">
+          <ul className="menu menu-horizontal text-lg">
             <li><Link className="p-3" to="/">Home</Link></li>
             <li><Link className="p-3" to="/blogs">About</Link></li>
             <li><Link className="p-3" to="/blogs">Carrer</Link></li>
