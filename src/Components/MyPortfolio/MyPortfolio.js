@@ -3,14 +3,13 @@ import React from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import image from '../../images/4.png'
-import shape from '../../images/shape.png'
 
 
 const MyPortfolio = () => {
     AOS.init();
     return (
         <div className='bg-sky-900'>
-            <div className='flex justify-between h-96 text-white items-end' style={{backgroundImage:`url(${shape})`,backgroundSize:'cover'}}>
+            <div className='flex justify-between h-96 text-white items-end'>
                 <div className='mb-36 lg:ml-20'><h1 className='lg:text-4xl mb-5 font-bold' data-aos="fade-right" data-aos-duration="1000">Hi, I am Md. Mehedi Hasan.</h1>
                 <p className='lg:text-2xl' data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000">I am a full stack web developer.I use MERN stack to develope apps.</p></div>
                 <div className="avatar">

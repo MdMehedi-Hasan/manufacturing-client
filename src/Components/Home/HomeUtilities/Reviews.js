@@ -14,7 +14,7 @@ const Reviews = () => {
             <div className='w-12 bg-slate-400 rounded h-1 mx-auto mb-10 mt-2'></div>
             <div className='grid lg:grid-cols-4 sm:grid-cols-2 gap-5'>
                 {feedbacks.map(feedback =>
-                    <div key={feedback._id} className="card w-auto bg-base-100 shadow-xl p-5 bg-amber-500">
+                    <div key={feedback._id} className="card w-auto shadow-xl p-5 bg-amber-500">
                         <div className='flex items-center'>
                             <div className="avatar">
                                 <div className="w-24 h-24 rounded-full">
