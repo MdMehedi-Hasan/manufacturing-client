@@ -7,7 +7,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 // import required modules
-import { EffectFade, Autoplay, Pagination } from "swiper";
+import {Autoplay, Pagination } from "swiper";
 import image1 from "../../../images/slider image/Driller.jpg"
 import image2 from "../../../images/slider image/rsz_630ef4b59048b.jpg"
 import image3 from "../../../images/slider image/house-tools.jpg"
@@ -21,7 +21,7 @@ const Slider = () => {
         <>
             <Swiper
                 spaceBetween={30}
-                effect={"fade"}
+                centeredSlides={true}
                 pagination={{
                     clickable: true,
                 }}
@@ -29,7 +29,7 @@ const Slider = () => {
                     delay: 3000,
                     disableOnInteraction: false,
                 }}
-                modules={[EffectFade, Autoplay, Pagination]}
+                modules={[Autoplay, Pagination]}
                 className="mySwiper"
             >
                 <SwiperSlide>
