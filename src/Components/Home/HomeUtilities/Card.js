@@ -8,11 +8,11 @@ const Card = ({ product }) => {
         navigate(`/purchase/${id}`)
     }
     return (
-        <div className="card w-auto bg-base-100 shadow-2xl mx-2 mb-4" data-aos="zoom-in" data-aos-duration="1000">
-            <figure className="max-h-46 p-5">
+        <div className="card w-auto shadow-2xl mx-2 mb-4" data-aos="zoom-in" data-aos-duration="1000">
+            <figure className="max-h-46 p-5 bg-white">
                 <img width="200px" height="200px" src={productImage} alt="" className="rounded-xl" />
             </figure>
-            <div className="card-body p-4 pl-6 text-left bg-yellow-500 text-black">
+            <div className="card-body bg-yellow-500 glass hover:bg-yellow-500 p-4 pl-6 text-left text-black">
                 <h2 className="card-title">{productName}</h2>
                 <p>{details.split(".",2).join(". ")}</p>
                 <p><span className='font-bold'>Available:</span> {productQnty} pcs <sub>(minimum {productMinOrder} pcs)</sub></p>

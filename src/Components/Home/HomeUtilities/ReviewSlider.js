@@ -3,44 +3,74 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
+// import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // import required modules
-import { Pagination, Navigation, Autoplay } from "swiper";
-
-
+import { Navigation, Autoplay } from "swiper";
+import { useState, useEffect } from 'react';
+import { Icon } from '@iconify/react';
+import image from '../../../images/yellow-comma.png'
 
 const ReviewSlider = () => {
+    const [feedbacks, setFeedbacks] = useState([])
+    useEffect(() => {
+        fetch('https://blooming-ravine-00694.herokuapp.com/reviews')
+            .then(res => res.json())
+            .then(data => setFeedbacks(data))
+    }, [])
+    console.log(feedbacks);
     return (
         <>
             <Swiper
-                slidesPerView={3}
+                slidesPerView={1}
                 spaceBetween={30}
                 slidesPerGroup={1}
                 centeredSlides={true}
+                breakpoints={{
+                    640: {
+                      slidesPerView: 1,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 40,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                      spaceBetween: 50,
+                    },
+                  }}
                 autoplay={{
                     delay: 2500,
                     disableOnInteraction: false,
                 }}
                 loop={true}
                 loopFillGroupWithBlank={true}
-                pagination={{
-                    clickable: true,
-                }}
                 navigation={false}
-                modules={[Pagination, Navigation, Autoplay]}
-                className="mySwiper"
+                modules={[Navigation, Autoplay]}
+                className="mySwiper !pt-16 border-4"
             >
-                <SwiperSlide className="p-28 bg-yellow-300">Slide 1</SwiperSlide>
-                <SwiperSlide className="p-28 bg-yellow-300">Slide 2</SwiperSlide>
-                <SwiperSlide className="p-28 bg-yellow-300">Slide 3</SwiperSlide>
-                <SwiperSlide className="p-28 bg-yellow-300">Slide 4</SwiperSlide>
-                <SwiperSlide className="p-28 bg-yellow-300">Slide 5</SwiperSlide>
-                <SwiperSlide className="p-28 bg-yellow-300">Slide 6</SwiperSlide>
-                <SwiperSlide className="p-28 bg-yellow-300">Slide 7</SwiperSlide>
-                <SwiperSlide className="p-28 bg-yellow-300">Slide 8</SwiperSlide>
-                <SwiperSlide className="p-28 bg-yellow-300">Slide 9</SwiperSlide>
+                {feedbacks.map(feedback =>
+                    <SwiperSlide className="border-4 h-full">                        
+                        <div key={feedback._id} className='bg-white text-black rounded-lg'>
+                            <div className="avatar flex justify-center">
+                                <div className="w-24 rounded-full ring ring-white ring-offset-base-100 ring-offset-2 mt-[-50px]">
+                                    <img src={feedback.image} alt='' />
+                                </div>
+                            </div>
+                            <h1 className='text-center font-semibold pt-4'>{feedback.name}</h1>
+                            <h5 className='text-center text-sm text-slate-300 pb-5'>{feedback.email}</h5>
+                            <div className="flex justify-center items-center px-5">
+                                <div className="grid border-t w-full mr-0 border-amber-200 place-items-center"></div>
+                                <img className="divider divider-horizontal w-24 m-0 mb-5" src={image} alt="" />
+                                <div className="grid border-t w-full mr-0 border-amber-200 place-items-center"></div>
+                            </div>
+                            <p className='px-5 text-center'>{feedback.feedback}</p>
+                            <div className='flex justify-center py-4'><Icon icon="emojione:star" /><Icon icon="emojione:star" /><Icon icon="emojione:star" /><Icon icon="emojione:star" /><Icon icon="emojione:star" /></div>
+                        </div>
+                    </SwiperSlide>
+                )}
             </Swiper>
         </>
     );
