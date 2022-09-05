@@ -31,10 +31,10 @@ const Summary = () => {
                 
             </div>
             <div className='grid grid-cols-4 lg:gap-4 gap-2 lg:mx-10'>
-                <div className='lg:mb-[-100px] mb-[-15px] h-16 lg:h-40 text-4xl hover:-translate-y-2 duration-200 bg-amber-500 shadow flex items-center justify-center p-5 lg:p-0'><Icon icon="logos:booqable" /></div>
-                <div className='lg:mb-[-100px] mb-[-15px] h-16 lg:h-40 text-4xl hover:-translate-y-2 duration-200 bg-amber-500 shadow flex items-center justify-center p-5 lg:p-0'><Icon icon="logos:chargebee" /></div>
-                <div className='lg:mb-[-100px] mb-[-15px] h-16 lg:h-40 text-4xl hover:-translate-y-2 duration-200 bg-amber-500 shadow flex items-center justify-center p-5 lg:p-0'><Icon icon="logos:delighted" /></div>
-                <div className='lg:mb-[-100px] mb-[-15px] h-16 lg:h-40 text-4xl hover:-translate-y-2 duration-200 bg-amber-500 shadow flex items-center justify-center p-5 lg:p-0'><Icon icon="logos:behance" /></div>
+                <div className='lg:mb-[-100px] mb-[-15px] h-16 lg:h-40 text-4xl hover:-translate-y-2 duration-200 bg-gradient-to-t from-amber-400 to-amber-100 shadow flex items-center justify-center p-5 lg:p-0'><Icon icon="logos:booqable" /></div>
+                <div className='lg:mb-[-100px] mb-[-15px] h-16 lg:h-40 text-4xl hover:-translate-y-2 duration-200 bg-gradient-to-t from-amber-400 to-amber-100 shadow flex items-center justify-center p-5 lg:p-0'><Icon icon="logos:chargebee" /></div>
+                <div className='lg:mb-[-100px] mb-[-15px] h-16 lg:h-40 text-4xl hover:-translate-y-2 duration-200 bg-gradient-to-t from-amber-400 to-amber-100 shadow flex items-center justify-center p-5 lg:p-0'><Icon icon="logos:delighted" /></div>
+                <div className='lg:mb-[-100px] mb-[-15px] h-16 lg:h-40 text-4xl hover:-translate-y-2 duration-200 bg-gradient-to-t from-amber-400 to-amber-100 shadow flex items-center justify-center p-5 lg:p-0'><Icon icon="logos:behance" /></div>
             </div>
             </div>
     );

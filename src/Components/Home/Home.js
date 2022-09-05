@@ -15,10 +15,12 @@ const Home = () => {
             .then(data => setProducts(data))
     }, [])
     return (
-        <div className=''>
+        <div className='montserrat'>
             <Banner></Banner>
             <div className='py-28 text-center mx-10'>
-                <h1 className='border-b-2 border-emerald-900 inline-block text-4xl text-amber-500 font-bold mb-16'>Products we manufacture</h1>
+                <p className='text-center text-amber-500'>Explore our products</p>
+                <h1 className='text-4xl text-[#1A222B] font-bold'>Our Products</h1>
+                <div className='w-12 h-1 rounded-lg bg-amber-400 mb-16 mt-3 mx-auto'></div>
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5'>
                     {
                         products.map(product => <Card product={product} key={product._id}></Card>)

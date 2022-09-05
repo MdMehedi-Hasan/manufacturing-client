@@ -13,7 +13,7 @@ const Banner = () => {
             <div className='h-fit w-11/12 mb-24'>
                 <div className='lg:w-2/3 pt-5'>
                     <h1 className='text-orange-100 lg:text-4xl lg:text-left lg:ml-10 text-center text-xl' data-aos="fade-right" data-aos-once="false" data-aos-duration="500" data-aos-easing="ease-in"
-                        data-aos-mirror="true"> <span className='block text-6xl lora'><span className='block text-4xl pb-5'>Welcome to</span> <span className='text-yellow-400'>Wrench</span> &amp; Screws!</span> <span className='pt-5 block text-2xl'>We manufacture tools for your daily needs.</span>
+                        data-aos-mirror="true"> <span className='block text-6xl lora'><span className='block text-4xl pb-5'>Welcome to</span> <span className='text-amber-400'>Wrench</span> &amp; Screws!</span> <span className='pt-5 block text-2xl'>We manufacture tools for your daily needs.</span>
                     </h1>
                 </div>
                 <p data-aos="fade-right" data-aos-once="false" data-aos-duration="1000" data-aos-easing="ease-in"

@@ -12,7 +12,7 @@ const Card = ({ product }) => {
             <figure className="max-h-46 p-5 bg-white">
                 <img width="200px" height="200px" src={productImage} alt="" className="rounded-xl" />
             </figure>
-            <div className="card-body bg-yellow-500 glass hover:bg-yellow-500 p-4 pl-6 text-left text-black">
+            <div className="card-body bg-gradient-to-t from-amber-400 to-amber-100 glass hover:bg-gradient-to-t hover:from-amber-400 hover:to-amber-100 p-4 pl-6 text-left text-[#1A222B]">
                 <h2 className="card-title">{productName}</h2>
                 <p>{details.split(".",2).join(". ")}</p>
                 <p><span className='font-bold'>Available:</span> {productQnty} pcs <sub>(minimum {productMinOrder} pcs)</sub></p>

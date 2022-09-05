@@ -49,10 +49,10 @@ const ReviewSlider = () => {
                 loopFillGroupWithBlank={true}
                 navigation={false}
                 modules={[Navigation, Autoplay]}
-                className="mySwiper !pt-16 border-4"
+                className="mySwiper !pt-16"
             >
                 {feedbacks.map(feedback =>
-                    <SwiperSlide className="border-4 h-full">                        
+                    <SwiperSlide className="h-full">                        
                         <div key={feedback._id} className='bg-white text-black rounded-lg'>
                             <div className="avatar flex justify-center">
                                 <div className="w-24 rounded-full ring ring-white ring-offset-base-100 ring-offset-2 mt-[-50px]">

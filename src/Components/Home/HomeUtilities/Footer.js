@@ -4,7 +4,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer py-20 lg:pl-32 bg-gradient-to-t from-amber-500 to-amber-200 text-base-content font-semibold">
+            <footer className="footer py-20 lg:pl-32 bg-gradient-to-t from-amber-400 to-amber-100 text-base-content font-semibold">
                 <div>
                     <span className="footer-title text-xl">Services</span>
                     <a href="/" className="link link-hover">Branding</a>
@@ -38,7 +38,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
-            <footer className="footer px-10 py-4 border-t bg-amber-500 text-black border-amber-300">
+            <footer className="footer px-10 py-4 border-t bg-amber-400 text-black border-amber-300">
                 <div className="items-center grid-flow-col">
                 <Icon width="40" icon="entypo:tools"/>
                     <p>ACME Industries Ltd. <br /> Providing reliable tech since 2020 - {new Date().getFullYear()}</p>
