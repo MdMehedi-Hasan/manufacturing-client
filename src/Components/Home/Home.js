@@ -15,7 +15,7 @@ const Home = () => {
             .then(data => setProducts(data))
     }, [])
     return (
-        <div className='montserrat bg-red-600'>
+        <div className='montserrat'>
             <Banner></Banner>
             <div className='py-28 text-center lg:mx-10 mx-5'>
                 <p className='text-center text-amber-500'>Explore our products</p>
