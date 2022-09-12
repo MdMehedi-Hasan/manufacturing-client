@@ -8,7 +8,7 @@ const Card = ({ product }) => {
         navigate(`/purchase/${id}`)
     }
     return (
-        <div className="card w-auto shadow-2xl mx-2 mb-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div className="card w-auto shadow-2xl lg:mx-2 mb-4" data-aos="zoom-in" data-aos-duration="1000">
             <figure className="max-h-46 p-5 bg-white">
                 <img width="200px" height="200px" src={productImage} alt="" className="rounded-xl" />
             </figure>
