@@ -8,8 +8,9 @@ import image from '../../images/4.png'
 const MyPortfolio = () => {
     AOS.init();
     return (
-        <div className='bg-sky-900 flex items-center justify-center h-screen text-6xl text-white'>
-            Under construction
+        
+        <div>
+            <iframe className='h-screen w-full d-block' title='Portfolio' src="https://mehedihasan21.netlify.app/" frameborder="0" ></iframe>
         </div>
     );
 };

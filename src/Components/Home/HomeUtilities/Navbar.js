@@ -2,12 +2,13 @@ import { Icon } from '@iconify/react';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
   const [users, setUsers] = useState([])
+  const location = useLocation()
   useEffect(() => {
     if (user) {
       fetch("https://blooming-ravine-00694.herokuapp.com/user", {
@@ -22,7 +23,7 @@ const Navbar = () => {
     }
   }, [user])
   return (
-    <div className='py-5 bg-amber-400 text-white'>
+    <div className={`py-5 ${location.pathname === '/myportfolio' ? 'bg-slate-800' : 'bg-amber-400'}  text-white`}>
       <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
@@ -45,7 +46,7 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <Link to='/' className="btn btn-ghost normal-case text-xl"><span className='text-black text-4xl'><Icon icon="entypo:tools" /></span> &nbsp;<span className='text-black'>Wrench &amp; </span>&nbsp;Screws</Link>
+          <Link to='/' className="btn btn-ghost normal-case text-xl"><span className={`${location.pathname === '/myportfolio' ? 'text-white' : 'text-black'} text-4xl`}><Icon icon="entypo:tools" /></span> &nbsp;<span className={`${location.pathname === '/myportfolio' ? 'text-white' : 'text-black'}`}>Wrench &amp; </span>&nbsp;Screws</Link>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal font-semibold text-lg">
