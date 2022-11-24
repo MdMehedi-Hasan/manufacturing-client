@@ -22,7 +22,7 @@ import MyPortfolio from './Components/MyPortfolio/MyPortfolio';
 
 function App() {
   return (
-    <div>
+    <div className='mx-auto max-w-7xl'>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
