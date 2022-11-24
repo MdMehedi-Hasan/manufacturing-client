@@ -15,11 +15,17 @@ import image from '../../../images/yellow-comma.png'
 const ReviewSlider = () => {
     const [feedbacks, setFeedbacks] = useState([])
     useEffect(() => {
-        fetch('https://blooming-ravine-00694.herokuapp.com/reviews')
+        /* fetch('https://blooming-ravine-00694.herokuapp.com/reviews')
             .then(res => res.json())
-            .then(data => setFeedbacks(data))
+            .then(data => setFeedbacks(data)) */
+            const fetchData = async () => {
+                const data = await fetch('https://blooming-ravine-00694.herokuapp.com/reviews');
+                const json = await data.json();
+                setFeedbacks(json)
+            }
+                fetchData()
+                .catch(console.error);;
     }, [])
-    console.log(feedbacks);
     return (
         <>
             <Swiper
@@ -29,18 +35,18 @@ const ReviewSlider = () => {
                 centeredSlides={true}
                 breakpoints={{
                     640: {
-                      slidesPerView: 1,
-                      spaceBetween: 20,
+                        slidesPerView: 1,
+                        spaceBetween: 20,
                     },
                     768: {
-                      slidesPerView: 2,
-                      spaceBetween: 40,
+                        slidesPerView: 2,
+                        spaceBetween: 40,
                     },
                     1024: {
-                      slidesPerView: 3,
-                      spaceBetween: 50,
+                        slidesPerView: 3,
+                        spaceBetween: 50,
                     },
-                  }}
+                }}
                 autoplay={{
                     delay: 2500,
                     disableOnInteraction: false,
@@ -52,7 +58,7 @@ const ReviewSlider = () => {
                 className="mySwiper !pt-16"
             >
                 {feedbacks.map(feedback =>
-                    <SwiperSlide className="h-full">                        
+                    <SwiperSlide className="h-full">
                         <div key={feedback._id} className='bg-white text-black rounded-lg'>
                             <div className="avatar flex justify-center">
                                 <div className="w-24 rounded-full ring ring-white ring-offset-base-100 ring-offset-2 mt-[-50px]">
