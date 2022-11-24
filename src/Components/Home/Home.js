@@ -10,9 +10,16 @@ import MAp from './HomeUtilities/MAp';
 const Home = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('https://blooming-ravine-00694.herokuapp.com/products')
+        /* fetch('https://blooming-ravine-00694.herokuapp.com/products')
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => setProducts(data)) */
+        const fetchData = async () => {
+            const data = await fetch('https://blooming-ravine-00694.herokuapp.com/products');
+            const json = await data.json();
+            setProducts(json)
+        }
+            fetchData()
+            .catch(console.error);;
     }, [])
     return (
         <div className='montserrat'>
