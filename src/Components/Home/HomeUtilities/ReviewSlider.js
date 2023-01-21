@@ -15,16 +15,16 @@ import image from '../../../images/yellow-comma.png'
 const ReviewSlider = () => {
     const [feedbacks, setFeedbacks] = useState([])
     useEffect(() => {
-        /* fetch('https://blooming-ravine-00694.herokuapp.com/reviews')
+        /* fetch('https://wrench-and-screws.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setFeedbacks(data)) */
-            const fetchData = async () => {
-                const data = await fetch('https://blooming-ravine-00694.herokuapp.com/reviews');
-                const json = await data.json();
-                setFeedbacks(json)
-            }
-                fetchData()
-                .catch(console.error);;
+        const fetchData = async () => {
+            const data = await fetch('https://wrench-and-screws.vercel.app/reviews');
+            const json = await data.json();
+            setFeedbacks(json)
+        }
+        fetchData()
+            .catch(console.error);;
     }, [])
     return (
         <>

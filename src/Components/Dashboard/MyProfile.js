@@ -12,7 +12,7 @@ const MyProfile = () => {
     console.log(info);
     const [update, setUpdate] = useState(false)
     useEffect(() => {
-        fetch("https://blooming-ravine-00694.herokuapp.com/user", {
+        fetch("https://wrench-and-screws.vercel.app/user", {
             method: "GET",
             headers: {
                 'email': `${user?.email}`
@@ -25,7 +25,7 @@ const MyProfile = () => {
         const number = e.target.number.value;
         const address = e.target.address.value;
         e.preventDefault();
-        fetch('https://blooming-ravine-00694.herokuapp.com/user/update', {
+        fetch('https://wrench-and-screws.vercel.app/user/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,11 +47,11 @@ const MyProfile = () => {
                     </div>
                     <button onClick={() => setForm(true)} className="btn btn-accent mt-5">Edit profile</button>
                     <div className='mt-5'>
-                        <div className='flex items-center mb-3'><Icon icon="ic:baseline-person" /><span className='ml-2'>{user.displayName? user.displayName : "N/A"}</span></div>
+                        <div className='flex items-center mb-3'><Icon icon="ic:baseline-person" /><span className='ml-2'>{user.displayName ? user.displayName : "N/A"}</span></div>
                         <div className='flex items-center mb-3'><Icon icon="ic:baseline-email" /><span className='ml-2'>{user.email}</span></div>
                         <div className='flex items-center'><Icon icon="carbon:phone" /><span className='ml-2'>{info?.number}</span></div>
                     </div>
-                    <button className="btn btn-outline btn-accent text-white" onClick={() =>  signOut(auth) }> Log out</button>
+                    <button className="btn btn-outline btn-accent text-white" onClick={() => signOut(auth)}> Log out</button>
                 </div>
             </div>
             {form ? <div>

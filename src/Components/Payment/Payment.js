@@ -14,7 +14,7 @@ const Payment = () => {
     const [productDetails, setProductDetails] = useState({})
     const { id } = useParams();
     useEffect(() => {
-        fetch(`https://blooming-ravine-00694.herokuapp.com/purchase/${id}`)
+        fetch(`https://wrench-and-screws.vercel.app/purchase/${id}`)
             .then(res => res.json())
             .then(data => {
                 setOrderDetails(data);

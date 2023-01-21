@@ -15,12 +15,12 @@ const PurchaseDetails = () => {
     const status = 'pending'
     const navigate = useNavigate()
     useEffect(() => {
-        fetch(`https://blooming-ravine-00694.herokuapp.com/products/${id}`)
+        fetch(`https://wrench-and-screws.vercel.app/products/${id}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
     useEffect(() => {
-        fetch('https://blooming-ravine-00694.herokuapp.com/user', {
+        fetch('https://wrench-and-screws.vercel.app/user', {
             method: "GET",
             headers: {
                 'authorization': `${localStorage.getItem('accessToken')}`,
@@ -33,7 +33,7 @@ const PurchaseDetails = () => {
     const handleOrder = (e) => {
         e.preventDefault();
         const orderQnty = e.target.orderQnty.value;
-        fetch('https://blooming-ravine-00694.herokuapp.com/purchase', {
+        fetch('https://wrench-and-screws.vercel.app/purchase', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const PurchaseDetails = () => {
         const address = e.target.address.value
         const number = e.target.number.value
         const email = user.email
-        fetch('https://blooming-ravine-00694.herokuapp.com/user/update', {
+        fetch('https://wrench-and-screws.vercel.app/user/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

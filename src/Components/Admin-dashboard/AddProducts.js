@@ -12,7 +12,7 @@ const AddProducts = () => {
         const productDescription = e.target.description.value;
         const product = { productName, productPrice, productQnty, productMinOrder, productImage, productDescription }
 
-        fetch('https://blooming-ravine-00694.herokuapp.com/products', {
+        fetch('https://wrench-and-screws.vercel.app/products', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',

@@ -8,7 +8,7 @@ const MyOrders = () => {
   const [product, setProduct] = useState([])
   const [reFetch, setReFetch] = useState(false)
   useEffect(() => {
-    fetch('https://blooming-ravine-00694.herokuapp.com/purchaseIndiviual', {
+    fetch('https://wrench-and-screws.vercel.app/purchaseIndiviual', {
       method: "GET",
       headers: {
         'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ const MyOrders = () => {
       .then(data => setProduct(data))
   }, [reFetch])
   const handleDelete = (id) => {
-    fetch(`https://blooming-ravine-00694.herokuapp.com/purchase/${id}`, {
+    fetch(`https://wrench-and-screws.vercel.app/purchase/${id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',

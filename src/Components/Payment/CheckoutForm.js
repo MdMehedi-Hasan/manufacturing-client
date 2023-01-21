@@ -18,7 +18,7 @@ const CheckoutForm = ({ productDetails, orderDetails }) => {
 
     useEffect(() => {
         if (price) {
-            fetch("https://blooming-ravine-00694.herokuapp.com/create-payment-intent", {
+            fetch("https://wrench-and-screws.vercel.app/create-payment-intent", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ price }),
@@ -79,7 +79,7 @@ const CheckoutForm = ({ productDetails, orderDetails }) => {
                 transactionId: paymentIntent.id,
                 id: orderDetails._id
             }
-            fetch(`https://blooming-ravine-00694.herokuapp.com/purchase/${productDetails._id}`, {
+            fetch(`https://wrench-and-screws.vercel.app/purchase/${productDetails._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

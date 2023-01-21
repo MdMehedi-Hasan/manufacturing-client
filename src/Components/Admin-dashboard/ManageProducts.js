@@ -8,12 +8,12 @@ const ManageProducts = () => {
     const [updateQnty, setUpdateQnty] = useState(false)
     // ===================================== Getting all products ====================================
     useEffect(() => {
-        fetch("https://blooming-ravine-00694.herokuapp.com/products")
+        fetch("https://wrench-and-screws.vercel.app/products")
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [updateDelete || updateQnty])
     const handleDelete = (id) => {
-        fetch('https://blooming-ravine-00694.herokuapp.com/products', {
+        fetch('https://wrench-and-screws.vercel.app/products', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

@@ -10,15 +10,15 @@ import MAp from './HomeUtilities/MAp';
 const Home = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        /* fetch('https://blooming-ravine-00694.herokuapp.com/products')
+        /* fetch('https://wrench-and-screws.vercel.app/products')
             .then(res => res.json())
             .then(data => setProducts(data)) */
         const fetchData = async () => {
-            const data = await fetch('https://blooming-ravine-00694.herokuapp.com/products');
+            const data = await fetch('https://wrench-and-screws.vercel.app/products');
             const json = await data.json();
             setProducts(json)
         }
-            fetchData()
+        fetchData()
             .catch(console.error);;
     }, [])
     return (

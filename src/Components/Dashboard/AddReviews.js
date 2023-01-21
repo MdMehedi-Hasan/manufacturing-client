@@ -8,7 +8,7 @@ const AddReviews = () => {
     e.preventDefault();
     const feedback = { name: user?.displayName, email: user.email, image: user?.photoURL, feedback: e?.target?.feedback?.value, ratings: e?.target?.ratings?.value }
 
-    fetch('https://blooming-ravine-00694.herokuapp.com/reviews', {
+    fetch('https://wrench-and-screws.vercel.app/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

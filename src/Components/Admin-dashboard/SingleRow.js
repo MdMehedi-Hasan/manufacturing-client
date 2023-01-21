@@ -6,7 +6,7 @@ const SingleRow = ({ product, handleDelete, updateQnty, setUpdateQnty }) => {
     const [newQuantity, setNewQuantity] = useState(0)
     let updatedQuantity = parseInt(productQnty) + parseInt(newQuantity);
     const handleUpdate = (id) => {
-        fetch('https://blooming-ravine-00694.herokuapp.com/products', {
+        fetch('https://wrench-and-screws.vercel.app/products', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

@@ -4,7 +4,7 @@
 //     const [token, setToken] = useState('');
 //     const email = user?.user?.email
 //     if (email) {
-//         fetch('https://blooming-ravine-00694.herokuapp.com/users', {
+//         fetch('https://wrench-and-screws.vercel.app/users', {
 //             method: 'PUT',
 //             headers: {
 //                 'Content-Type': 'application/json',

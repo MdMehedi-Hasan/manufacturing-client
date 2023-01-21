@@ -11,7 +11,7 @@ const Navbar = () => {
   const location = useLocation()
   useEffect(() => {
     if (user) {
-      fetch("https://blooming-ravine-00694.herokuapp.com/user", {
+      fetch("https://wrench-and-screws.vercel.app/user", {
         method: 'GET',
         headers: {
           email: `${user?.email}`,

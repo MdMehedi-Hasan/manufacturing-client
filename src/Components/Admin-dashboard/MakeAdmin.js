@@ -10,16 +10,17 @@ const MakeAdmin = () => {
   // const [user] = useAuthState(auth);
   const [users, setUsers] = useState([])
   const [deleteUser, setDeleteUser] = useState(false)
-  const [admin,setAdmin] =useState(false)
+  const [admin, setAdmin] = useState(false)
   useEffect(() => {
-    fetch("https://blooming-ravine-00694.herokuapp.com/users")
+    fetch("https://wrench-and-screws.vercel.app/users")
       .then(res => res.json())
       .then(data =>
-         setUsers(data),
+        setUsers(data),
         //  setDeleteUser(true)
-      )}, [admin])
+      )
+  }, [admin])
   const makeAdmin = (email) => {
-    fetch('https://blooming-ravine-00694.herokuapp.com/users/admin', {
+    fetch('https://wrench-and-screws.vercel.app/users/admin', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -32,14 +33,14 @@ const MakeAdmin = () => {
           toast.success(`Created ${email} as admin!`);
           setAdmin(!admin)
         }
-        else { 
+        else {
           toast.error(`${email} is already an admin!`);
           setAdmin(false)
-      }
+        }
       })
   }
   const handleDelete = (email) => {
-    fetch('https://blooming-ravine-00694.herokuapp.com/user/delete', {
+    fetch('https://wrench-and-screws.vercel.app/user/delete', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
