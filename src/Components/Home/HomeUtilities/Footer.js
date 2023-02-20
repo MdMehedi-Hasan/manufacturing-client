@@ -4,7 +4,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer py-20 lg:pl-32 bg-gradient-to-t from-amber-400 to-amber-100 text-base-content font-semibold">
+            <footer className="footer py-20 pl-10 lg:pl-32 bg-gradient-to-t from-amber-400 to-amber-100 text-base-content font-semibold">
                 <div>
                     <span className="footer-title text-xl">Services</span>
                     <a href="/" className="link link-hover">Branding</a>
