@@ -10,7 +10,7 @@ const MAp = () => {
                     <div className='bg-gradient-to-r from-amber-400 to-amber-100 w-96 h-80 mt-[-250px] hidden lg:block'></div>
                     </div>
                 </div>
-                <div>
+                <div className='px-10 lg:px-0'>
                     <h1 className='text-6xl text-amber-500 '>We locate here</h1>
                     <div className='w-8/12 bg-slate-400 rounded h-1 mb-10 mt-2'></div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint alias earum et mollitia fugiat suscipit explicabo provident officia obcaecati hic. Mollitia fuga deserunt ullam vel veritatis totam ducimus dolorem suscipit.Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi repellendus earum impedit alias? Omnis, officia dolor ipsum temporibus praesentium cumque sunt magnam doloribus libero delectus, nobis obcaecati ipsa deleniti.</p>
