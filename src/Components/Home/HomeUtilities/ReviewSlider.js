@@ -58,8 +58,8 @@ const ReviewSlider = () => {
                 className="mySwiper !pt-16"
             >
                 {feedbacks.map(feedback =>
-                    <SwiperSlide className="h-full">
-                        <div key={feedback._id} className='bg-white text-black rounded-lg'>
+                    <SwiperSlide key={feedback._id} className="h-full">
+                        <div className='bg-white text-black rounded-lg'>
                             <div className="avatar flex justify-center">
                                 <div className="w-24 rounded-full ring ring-white ring-offset-base-100 ring-offset-2 mt-[-50px]">
                                     <img src={feedback.image} alt='' />
