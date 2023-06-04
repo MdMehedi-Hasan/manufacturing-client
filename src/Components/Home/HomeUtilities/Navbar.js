@@ -24,7 +24,7 @@ const Navbar = () => {
   }, [user])
   return (
     <div className={`py-5 ${location.pathname === '/myportfolio' ? 'bg-slate-800' : 'bg-amber-400'}  text-white`}>
-      <div className="navbar">
+      <div className="container mx-auto navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">

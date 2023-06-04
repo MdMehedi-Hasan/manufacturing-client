@@ -10,7 +10,7 @@ const Banner = () => {
     AOS.init();
     return (
         <div className='h-screen lg:flex items-center' style={{ backgroundImage: `url('${banner}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
-            <div className='h-fit lg:w-11/12 mb-24'>
+            <div className='container mx-auto h-fit lg:w-11/12 mb-24'>
                 <div className='lg:w-2/3 pt-5'>
                     <h1 className='text-orange-100 lg:text-4xl text-left lg:ml-10 text-xl mt-10 lg:mt-0' data-aos="fade-right" data-aos-once="false" data-aos-duration="500" data-aos-easing="ease-in"
                         data-aos-mirror="true"> <span className='block lg:text-6xl text-4xl ml-5 lg:ml-0'><span className='block lg:text-4xl text-3xl pb-5'>Welcome to</span> <span className='text-amber-400'>Wrench</span> &amp; <span>Screws!</span></span> <span className='pt-5 block lg:text-2xl text-xl mx-3 lg:mx-0 ml-5'>We manufacture tools for your daily needs.</span>

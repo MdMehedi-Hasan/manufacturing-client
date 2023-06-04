@@ -41,7 +41,7 @@ const Footer = () => {
             <footer className="footer px-10 py-4 border-t bg-amber-400 text-black border-amber-300">
                 <div className="items-center grid-flow-col">
                 <Icon width="40" icon="entypo:tools"/>
-                    <p>ACME Industries Ltd. <br /> Providing reliable tech since 2020 - {new Date().getFullYear()}</p>
+                    <p>Wrench & Screws <br /> Providing reliable tools since 2020 - {new Date().getFullYear()}</p>
                 </div>
                 <div className="md:place-self-center md:justify-self-end">
                     <div className="grid grid-flow-col gap-4">

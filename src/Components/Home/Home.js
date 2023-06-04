@@ -24,7 +24,7 @@ const Home = () => {
     return (
         <div className='montserrat'>
             <Banner></Banner>
-            <div className='py-28 text-center lg:mx-10 mx-5'>
+            <div className='container mx-auto py-28 text-center'>
                 <p className='text-center text-amber-500'>Explore our products</p>
                 <h1 className='text-4xl text-[#1A222B] font-bold'>Our Products</h1>
                 <div className='w-12 h-1 rounded-lg bg-amber-400 mb-16 mt-3 mx-auto'></div>
